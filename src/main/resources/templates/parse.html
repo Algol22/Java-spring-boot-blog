@@ -15,18 +15,23 @@
 <main>
 
     <div class="container mt-5">
-        <h1>Парсер погоды</h1>
-        <b>Город:</b> <span th:text="${cityshow}"/> <br>
-        <b>Температура:</b> <span th:text="${temp}"/> <br>
-            <b> Максимальная температура:</b> <span th:text="${temp_max}"/> <br>
-                <b>Минимальная температура:</b> <span th:text="${temp_min}"/> <br>
-                    <b>По ощущениям:</b> <span th:text="${feels}"/> <br>
-                        <b> Влажность:</b> <span th:text="${humidity}"/> % <br>
+        <div class="jumbotron bg-dark text-white" style='
+           background-size: cover;
+    height: 100%;
+    background-image: url("https://source.unsplash.com/1600x900/?weather"'>
 
+        <h1>Weather</h1>
+        City: <span th:text="${cityshow}"/> <br>
+        Temp: <span th:text="${temp}"/> <br>
+           Max temp: <span th:text="${temp_max}"/> <br>
+               Min temp: <span th:text="${temp_min}"/> <br>
+                    Feels: <span th:text="${feels}"/> <br>
+                       Humidity: <span th:text="${humidity}"/> % <br>
+        </div>
 
         <form action="/parse" method="post">
             <input type="text" name="city" placeholder="Введите город" class="form-control"><br>
-            <button type="submit" class="btn btn-success">Узнать погоду</button>
+            <button type="submit" class="btn btn-secondary">Узнать погоду</button>
         </form>
         </div>
 

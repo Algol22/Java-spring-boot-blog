@@ -1,13 +1,107 @@
-    <div th:fragment="header">
-    <header class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-body border-bottom shadow-sm">
-        <p class="h5 my-0 me-md-auto fw-normal">Блог</p>
-        <nav class="my-2 my-md-0 me-md-3">
-            <a class="p-2 text-dark" href="/">Главная</a>
-            <a class="p-2 text-dark" href="/blog">Блог</a>
-            <a class="p-2 text-dark" href="/blog/add">Добавить статью</a>
-            <a class="p-2 text-dark" href="/about">Про нас</a>
-            <a class="p-2 text-dark" href="/parse">Парсер погоды</a>
 
-        </nav>
-    </header>
-    </div>
+
+<div th:fragment="header">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <style type="text/css">
+body{
+background-color:#222; color:#999
+}
+
+.alert{
+background-color:#343a40!important;
+color:#999;
+border-color:#343a40;
+ border-style: none;
+}
+
+a:link {
+  color: white;
+  text-decoration: none;
+}
+
+/* visited link */
+a:visited {
+  color: white;
+}
+
+/* mouse over link */
+a:hover {
+  color: white;
+  text-decoration: none;
+}
+
+/* selected link */
+a:active {
+  color: white;
+  text-decoration: none;
+}
+
+.main{
+    background-image: url('https://source.unsplash.com/1600x900/?design');
+    background-size: cover;
+    height: 100%;}
+
+.card {
+    min-height: 150px;
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.form-control, .form-control:focus {
+  background-color: #343A40;
+  border:none;
+  color: #999;
+}
+.img_container {
+color: #fff;
+text-shadow: 1px 1px 1px black;
+}
+
+</style>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="/">Java Blog</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/blog">Blog</a>
+                </li>
+
+                <span th:if="${ #authorization.expression('isAuthenticated()') and #strings.contains(#authentication.principal.authorities,'ADMIN')}">
+                <li class="nav-item">
+                    <a class="nav-link" href="/blog/add">Add</a>
+                </li>
+  </span>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/login">Login</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/about">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/parse">Weather</a>
+                </li>
+</ul>
+            <div class="navbar-text mr-3">
+                <span sec:authorize="isAuthenticated()">Logged : <span sec:authentication="name"></span> |
+                Role: <span sec:authentication="principal.authorities"></span> |
+                <a th:href="@{/logout}">Sign Out</a>
+            </span>
+            </div>
+
+        </div>
+    </nav>
+
+</div>

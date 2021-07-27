@@ -20,11 +20,21 @@
 
             <h3 th:text="${el.title}"/>
             <p th:text="${el.full_text}"/>
-            <p><b>Просмотры: </b><span th:text="${el.views}"/></p>
-            <a th:href="'/blog/' + ${el.id} + '/edit' " class="btn btn-warning">Редактировать</a><br><br>
+<!--            <p><b>Просмотры: </b><span th:text="${el.views}"/></p>-->
+
+
+
+            <div th:if="${ #authorization.expression('isAuthenticated()') and #strings.contains(#authentication.principal.authorities,'ADMIN')}">
+
+            <a th:href="'/blog/' + ${el.id} + '/edit' " class="btn btn-secondary">Редактировать</a><br><br>
+
+
             <form th:action="'/blog/' + ${el.id} + '/remove'" method="post">
-                <button class="btn btn-warning" type="submit">Удалить</button>
+                <button class="btn btn-secondary" type="submit">Удалить</button>
             </form>
+                </div>
+
+
         </div>
 
     </div>
