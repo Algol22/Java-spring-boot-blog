@@ -5,37 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="90d31898-99e8-4e13-9a71-2efdfdeb194d" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/blog.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/blog.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/springboot/blog/controllers/BlogController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/springboot/blog/controllers/BlogController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/springboot/blog/controllers/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/springboot/blog/controllers/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/about.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/about.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/blocks/footer.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/blocks/footer.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/blocks/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/blocks/header.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/blog-add.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/blog-add.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/blog-details.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/blog-details.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/blog-edit.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/blog-edit.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/blog-main.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/blog-main.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/home.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/parse.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/parse.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/springboot/blog/BlogApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/springboot/blog/BlogApplication.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/springboot/blog/controllers/BlogController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/springboot/blog/controllers/BlogController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/springboot/blog/controllers/MainController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/springboot/blog/controllers/MainController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/springboot/blog/models/Post.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/springboot/blog/models/Post.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/springboot/blog/repo/PostRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/springboot/blog/repo/PostRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/springboot/blog/weather/Weather.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/springboot/blog/weather/Weather.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/about.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/about.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/blocks/footer.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/blocks/footer.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/blocks/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/blocks/header.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/blog-add.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/blog-add.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/blog-details.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/blog-details.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/blog-edit.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/blog-edit.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/blog-main.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/blog-main.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/parse.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/parse.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/springboot/blog/BlogApplicationTests.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/springboot/blog/BlogApplicationTests.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
