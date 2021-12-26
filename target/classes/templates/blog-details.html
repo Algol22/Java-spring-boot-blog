@@ -1,4 +1,5 @@
 <!DOCTYPE HTML>
+<html lang="ru">
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Блог сайта</title>
@@ -36,7 +37,17 @@
                 </div>
 
 
-        </div>
+
+<!--            <div th:if="${ #authorization.expression('isAuthenticated()')}">-->
+
+<!--                <h1>Добавить комментарий</h1>-->
+
+<!--                <form th:action="'/blog/' + ${el.id} + '/comment'" method="post">-->
+<!--                    <textarea name="commented" placeholder="Введите комментарий" class="form-control"></textarea><br>-->
+<!--                    <button type="submit" class="btn btn-success">Добавить коммент</button>-->
+<!--                </form>-->
+
+<!--        </div>-->
 
     </div>
 

@@ -22,6 +22,7 @@
 
         <h3 th:text="${el.title}"/>
         <p th:text="${el.anons}"/>
+        <i style="font-size: small;"><p th:text="${el.thedate}"/></i>
         <a th:href="'/blog/' + ${el.id}" class="btn btn-secondary">Детальнее</a>
     </div>
 

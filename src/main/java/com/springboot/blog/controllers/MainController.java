@@ -54,6 +54,7 @@ try {
         double feelsd = obj.getJSONObject("main").getDouble("feels_like");
         double humidity = obj.getJSONObject("main").getDouble("humidity");
 
+
 //        double tempd  = Double.parseDouble(temp);
         int tempi= (int) Math. round(tempd);
 
@@ -75,11 +76,13 @@ try {
         model.addAttribute("feels", feelsi);
         model.addAttribute("humidity", humidity);
         model.addAttribute("cityshow", elements[elements.length-4]);
+
+} catch (Exception e){
+    System.out.print(city + " not found - 404");
+}
         return "parse";
 
- } catch (Exception e){
-System.out.print(city + " not found - 404");
-}
+
     }
 
 

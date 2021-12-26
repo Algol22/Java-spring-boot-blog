@@ -1,8 +1,8 @@
 package com.springboot.blog.models;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import org.apache.tomcat.jni.Address;
+
+import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 public class Post {
@@ -11,7 +11,9 @@ public class Post {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+
     private String title, anons, full_text;
+    private String thedate;
     private int views;
 
     public Long getId() {
@@ -54,13 +56,21 @@ public class Post {
         this.views = views;
     }
 
+    public String getThedate() {
+        return thedate;
+    }
+
+    public void setThedate(String thedate) {
+        this.thedate = thedate;
+    }
 
     public Post() {
     }
 
-    public Post(String title, String anons, String full_text) {
+    public Post(String title, String anons, String full_text, String thedate) {
         this.title = title;
         this.anons = anons;
         this.full_text = full_text;
+        this.thedate = thedate;
     }
 }
