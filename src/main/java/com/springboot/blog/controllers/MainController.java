@@ -35,7 +35,11 @@ public class MainController {
 
     @PostMapping("/parse")
     public String getweather(@RequestParam String city, Model model){
-        if(city==""){
+        
+
+try {
+
+if(city==""){
             city="Helsinki";
         }
         String showcity = city;
@@ -71,6 +75,9 @@ public class MainController {
         model.addAttribute("cityshow", elements[elements.length-4]);
         return "parse";
 
+ } catch (Exception e){
+System.out.print(city + " not found - 404");
+}
     }
 
 
