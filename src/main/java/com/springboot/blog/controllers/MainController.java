@@ -37,11 +37,13 @@ public class MainController {
     public String getweather(@RequestParam String city, Model model){
         
 
-try {
 
 if(city==""){
             city="Helsinki";
         }
+
+try {
+
         String showcity = city;
         Weather a = new Weather();
         String jsonString = a.getUrlContent("http://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=metric&appid=fa11a742a4d2e48ad88945dcea73facb&units=metric");
