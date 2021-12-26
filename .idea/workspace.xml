@@ -5,7 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="90d31898-99e8-4e13-9a71-2efdfdeb194d" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/springboot/blog/security/SpringSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/springboot/blog/security/SpringSecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/blog.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/blog.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/springboot/blog/controllers/BlogController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/springboot/blog/controllers/BlogController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/springboot/blog/controllers/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/springboot/blog/controllers/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/springboot/blog/security/MyAccessDeniedHandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/springboot/blog/security/SpringSecurityConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/springboot/blog/weather/Weather.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/springboot/blog/weather/Weather.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/403.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/403.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/about.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/about.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/blocks/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/blocks/header.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/blog-add.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/blog-add.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/blog-details.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/blog-details.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/blog-edit.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/blog-edit.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/blog-main.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/blog-main.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/parse.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/parse.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,9 +31,10 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
-        <option value="Class" />
         <option value="HTML File" />
+        <option value="Interface" />
+        <option value="Enum" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -47,7 +64,7 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/templates" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -55,6 +72,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\admin\Desktop\Blog Java\Java-spring-boot-blog\src\main\resources\templates" />
       <recent name="C:\Users\admin\Desktop\Java\new" />
       <recent name="C:\Users\admin\Desktop\Java\new\src\main\resources" />
     </key>

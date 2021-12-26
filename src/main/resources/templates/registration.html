@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Блог сайта</title>
+    <title>Registration</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
@@ -15,20 +15,13 @@
 
 <main>
 
-<div class="container mt-5">
-    <h1>Блог сайта</h1>
-    <div th:each="el : ${posts}" class="alert alert-info mt-2">
-
-        <h3 th:text="${el.title}"/>
-        <p th:text="${el.anons}"/>
-        <a th:href="'/blog/' + ${el.id}" class="btn btn-secondary">Детальнее</a>
-    </div>
-
-</div>
-
-</main>
-
-
-<div th:insert="blocks/footer :: footer"></div>
+    <div class="container mt-5">
+        <b><span th:text="${message}"/></b> <br>
+<form th:action="${path}" method="post">
+    <div><label> User Name: <input type="text" name="username" class="form-control"/> </label></div>
+    <div><label> Password: <input type="password" name="password" class="form-control"/> </label></div>
+    <div><input type="submit" value="Registration" class="btn btn-secondary"/></div>
+</form>
+        <div th:insert="blocks/footer :: footer"></div>
 </body>
 </html>

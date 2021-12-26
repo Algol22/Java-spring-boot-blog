@@ -29,9 +29,7 @@ public class MainController {
     }
 
     @GetMapping("/parse")
-    public String parse(Model model) {
-        String a = "This is parser first line";
-        model.addAttribute("parser", a);
+    public String parser() {
         return "parse";
     }
 

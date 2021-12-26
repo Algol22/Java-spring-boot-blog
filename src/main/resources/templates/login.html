@@ -3,6 +3,7 @@
 <head>
     <title>Login</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 </head>
 <body>
@@ -22,7 +23,8 @@
 <div th:if="${param.logout}">
     You have been logged out.
 </div>
-<form th:action="@{/login}" method="post">
+        <b><span th:text="${message}"/></b> <br>
+<form th:action="${path}" method="post">
     <div><label> User Name: <input type="text" name="username" class="form-control"/> </label></div>
     <div><label> Password: <input type="password" name="password" class="form-control"/> </label></div>
     <div><input type="submit" value="Sign In" class="btn btn-secondary"/></div>

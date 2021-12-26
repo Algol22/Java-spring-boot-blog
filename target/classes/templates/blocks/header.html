@@ -83,13 +83,26 @@ text-shadow: 1px 1px 1px black;
                 </li>
   </span>
 
+
+                <span th:if="${ #authorization.expression('!isAuthenticated()')}">
                 <li class="nav-item">
                     <a class="nav-link" href="/login">Login</a>
                 </li>
+                </span>
+                <span th:if="${ #authorization.expression('!isAuthenticated()')}">
+                <li class="nav-item">
+                    <a class="nav-link" href="/registration">Registration</a>
+                </li>
+                    </span>
 
                 <li class="nav-item">
                     <a class="nav-link" href="/about">About</a>
                 </li>
+                <span th:if="${ #authorization.expression('isAuthenticated()') and #strings.contains(#authentication.principal.authorities,'ADMIN')}">
+                <li class="nav-item">
+                    <a class="nav-link" href="/user">Users</a>
+                </li>
+  </span>
                 <li class="nav-item">
                     <a class="nav-link" href="/parse">Weather</a>
                 </li>

@@ -14,18 +14,20 @@
 
 
 <main>
-
+    <div th:if="${ #authorization.expression('isAuthenticated()') and #strings.contains(#authentication.principal.authorities,'ADMIN')}">
 <div class="container mt-5">
-    <h1>Блог сайта</h1>
-    <div th:each="el : ${posts}" class="alert alert-info mt-2">
+    <h1>Users</h1>
+    <div th:each="el : ${users}" >
 
-        <h3 th:text="${el.title}"/>
-        <p th:text="${el.anons}"/>
-        <a th:href="'/blog/' + ${el.id}" class="btn btn-secondary">Детальнее</a>
+        <h3 th:text="${el.username}"/>
+        <p th:text="${el.roles}"/>
+       <a th:href="'/user/' + ${el.id}" class="btn btn-secondary">Детальнее</a>
+
+
     </div>
 
 </div>
-
+    </div>
 </main>
 
 

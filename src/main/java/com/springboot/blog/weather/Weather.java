@@ -29,5 +29,4 @@ public class Weather {
         return content.toString();
     }
 
-
 }
