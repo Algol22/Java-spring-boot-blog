@@ -22,6 +22,7 @@
 
             <h3 th:text="${el.title}"/>
             <p th:text="${el.full_text}"/>
+            <i style="font-size: small;"> <p th:text="${el.thedate}"/></i>
 <!--            <p><b>Просмотры: </b><span th:text="${el.views}"/></p>-->
 
 
@@ -35,22 +36,32 @@
                 <button class="btn btn-secondary" type="submit">Удалить</button>
             </form>
                 </div>
+            <b>Comments:</b><br/>
+            <div th:each="al : ${comments}" class="alert alert-info mt-2">
 
+                <b> <span th:text="${al.getUserdb()}"/></b> /   <i style="font-size: small;"><span th:text="${al.getCommentDate()}"/></i>
+                <p th:text="${al.getText()}"/>
 
+                <div th:if="${ #authorization.expression('isAuthenticated()') and #strings.contains(#authentication.principal.authorities,'ADMIN')}">
+                    <form th:action="'/blog/'  + ${el.id} +'/'+ ${al.getId()} + '/removecomment'" method="post">
+                        <button class="btn btn-secondary" type="submit">Удалить</button>
+                    </form>
+                </div>
+            </div>
 
-<!--            <div th:if="${ #authorization.expression('isAuthenticated()')}">-->
+            <div th:if="${ #authorization.expression('isAuthenticated()')}">
 
-<!--                <h1>Добавить комментарий</h1>-->
+                <h4>Добавить комментарий</h4>
 
-<!--                <form th:action="'/blog/' + ${el.id} + '/comment'" method="post">-->
-<!--                    <textarea name="commented" placeholder="Введите комментарий" class="form-control"></textarea><br>-->
-<!--                    <button type="submit" class="btn btn-success">Добавить коммент</button>-->
-<!--                </form>-->
+                <form th:action="'/blog/' + ${el.id}" method="post">
+                    <textarea name="text" placeholder="Введите комментарий" class="form-control"></textarea><br>
+                    <button type="submit" class="btn btn-success">Добавить коммент</button>
+                </form>
 
-<!--        </div>-->
+        </div>
 
     </div>
-
+    </div>
 </main>
 
 

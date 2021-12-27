@@ -1,58 +1,88 @@
-//package com.springboot.blog.models;
-//
-//import javax.persistence.*;
-//
-//@Entity
-//public class Comment {
-//    @Id
-//    @GeneratedValue(strategy = GenerationType.AUTO)
-//    private Long id;
-//    private String author;
-//    private String comment;
-//    private String dated;
-//
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    Post post;
-//
-//    public Comment(){
-//    }
-//
-//    public Comment(String comment, String dated) {
-//        this.dated = dated;
-//        this.comment = comment;
-//    }
-//
-//    public Long getId() {
-//        return id;
-//    }
-//
-//    public void setId(Long id) {
-//        this.id = id;
-//    }
-//
-//
-//
-//    public String getAuthor() {
-//        return author;
-//    }
-//
-//    public void setAuthor(String author) {
-//        this.author = author;
-//    }
-//
-//    public String getDated() {
-//        return dated;
-//    }
-//
-//    public void setDated(String dated) {
-//        this.dated = dated;
-//    }
-//
-//    public String getComment() {
-//        return comment;
-//    }
-//
-//    public void setComment(String comment) {
-//        this.comment = comment;
-//    }
-//}
+package com.springboot.blog.models;
+
+
+import com.springboot.blog.domain.User;
+
+import javax.persistence.*;
+
+@Entity
+public class Comment {
+    @Id
+    @GeneratedValue(strategy= GenerationType.AUTO)
+    private Long commentId;
+    private String text;
+    private String userdb;
+    private String commentDate;
+
+
+
+
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "id")
+    private Post post;
+
+    public Comment() {
+    }
+
+    public Comment(String text, Post post, String userdb, String commentDate) {
+        this.post= post;
+        this.text = text;
+        this.userdb =userdb;
+        this.commentDate=commentDate;
+    }
+
+    @Override
+    public String toString() {
+        return "Comment{" +
+                "commentId=" + commentId +
+                ", text='" + text + '\'' +
+                ", post=" + post +
+                '}';
+    }
+
+    public Post getPost() {
+        return post;
+    }
+    public Long getId() {
+        return commentId;
+    }
+
+
+
+    public void setPost(Post post) {
+        this.post = post;
+    }
+
+    public void setText(String text) {
+        this.text = text;
+    }
+
+    public String getText() {
+        return text;
+    }
+
+    public Long getCommentId() {
+        return commentId;
+    }
+
+    public void setId(Long commentId) {
+        this.commentId = commentId;
+    }
+
+    public String getUserdb() {
+        return userdb;
+    }
+
+    public void setUserdb(String userdb) {
+        this.userdb = userdb;
+    }
+
+    public String getCommentDate() {
+        return commentDate;
+    }
+
+    public void setCommentDate(String commentDate) {
+        this.commentDate = commentDate;
+    }
+}

@@ -11,6 +11,8 @@ public class Post {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @OneToMany(mappedBy = "post", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Set <Comment> comments;
 
     private String title, anons, full_text;
     private String thedate;
@@ -67,10 +69,19 @@ public class Post {
     public Post() {
     }
 
+    public Set<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(Set<Comment> comments) {
+        this.comments = comments;
+    }
+
     public Post(String title, String anons, String full_text, String thedate) {
         this.title = title;
         this.anons = anons;
         this.full_text = full_text;
         this.thedate = thedate;
     }
+
 }

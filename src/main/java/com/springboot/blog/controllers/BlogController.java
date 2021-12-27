@@ -2,10 +2,13 @@ package com.springboot.blog.controllers;
 
 import com.springboot.blog.domain.User;
 //import com.springboot.blog.models.Comment;
+import com.springboot.blog.models.Comment;
 import com.springboot.blog.models.Post;
 //import com.springboot.blog.repo.CommentRepository;
+import com.springboot.blog.repo.CommentRepository;
 import com.springboot.blog.repo.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,10 +17,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Controller
 public class BlogController {
@@ -25,6 +25,8 @@ public class BlogController {
     @Autowired
     private PostRepository postRepository;
 
+    @Autowired
+    private CommentRepository commentRepository;
 
     @GetMapping("/blog")
     public String blogMain(Model model){
@@ -41,15 +43,28 @@ public class BlogController {
     }
 
 
-//    @PostMapping("/blog/{id}/comment")
-//    public String blogPostAdd(@RequestParam Comment commented,@PathVariable(value= "id") long id, Model model){
-//        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-//        Date date = new Date();
-//        Comment commentnew = new Comment(commented.getComment(), formatter.format(date).toString());
-//        commentRepository.save(commentnew);
-//        return "redirect:/blog";
-//
-//    }
+
+
+    @PostMapping("/blog/{id}")
+    public String add(
+            @AuthenticationPrincipal User currentUser,
+            @RequestParam String text,@PathVariable(value= "id") long id,
+            Map<String, Object> model
+    ){
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+        Date date = new Date();
+
+        Post post = postRepository.findById(id).orElseThrow();//если запись не найдена
+        Comment commentnew = new Comment(text, post, currentUser.getUsername(),formatter.format(date).toString() );
+        commentRepository.save(commentnew);
+
+        return "redirect:/blog/"+id;
+
+    }
+
+
+
+
 
     @PostMapping("/blog/add")
     public String blogPostAdd(@RequestParam String title, @RequestParam String anons, @RequestParam String full_text, Model model){
@@ -68,14 +83,19 @@ public class BlogController {
 
 
     @GetMapping("/blog/{id}")
-    public String blogDetails(@PathVariable(value= "id") long id, Model model){
+    public String blogDetails(@PathVariable(value= "id") long id ,Model model){
         if(!postRepository.existsById(id)){
             return "redirect:/blog";
         }
+
         Optional <Post> post =  postRepository.findById(id);
         List<Post> res = new ArrayList<>();
         post.ifPresent(res::add);
         model.addAttribute("post", res);
+
+
+        Set<Comment> comments = post.get().getComments();
+        model.addAttribute("comments", comments);
         return "blog-details";
 
     }
@@ -113,6 +133,14 @@ public class BlogController {
         Post post = postRepository.findById(id).orElseThrow();//если запись не найдена
         postRepository.delete(post);
         return "redirect:/blog";
+
+    }
+
+    @PostMapping("/blog/{intg}/{id}/removecomment")
+    public String blogCommentDelete(@PathVariable(value="id") long id, @PathVariable(value="intg") long intg, Model model){
+       Comment comment = commentRepository.findById(id).orElseThrow();
+        commentRepository.delete(comment);
+        return "redirect:/blog/{intg}";
 
     }
 
