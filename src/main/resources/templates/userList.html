@@ -18,14 +18,27 @@
     <div th:if="${ #authorization.expression('isAuthenticated()') and #strings.contains(#authentication.principal.authorities,'ADMIN')}">
 <div class="container mt-5">
     <h1>Users</h1>
-    <div th:each="el : ${users}" >
 
-        <h3 th:text="${el.username}"/>
-        <p th:text="${el.roles}"/>
-       <a th:href="'/user/' + ${el.id}" class="btn btn-secondary">Детальнее</a>
+    <table>
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Role</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+    <span th:each="el : ${users}" >
+<tr>
+    <td> <b th:text="${el.username}"/></td>
+      <td> <span th:text="${el.roles}"/></td>
+       <td><a th:href="'/user/' + ${el.id}" class="btn btn-secondary">Детальнее</a></td>
+    <td><a th:href="'/user/' + ${el.id} + '/del'" class="btn btn-secondary">Delete</a></td>
+</tr>
 
-
-    </div>
+    </span>
+        </tbody>
+    </table>
 
 </div>
     </div>

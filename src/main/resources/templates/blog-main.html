@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html lang="ru">
+<html lang="ru" xmlns="http://www.w3.org/1999/html">
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Блог сайта</title>
@@ -17,13 +17,55 @@
 <main>
 
 <div class="container mt-5">
+    <div class="alert alert-info mt-2">
+        <div class="row">
+
+            <div class="col-sm-3">
+                <form role="form" id="sendAddress" th:action=@{/blog} method="post">
+                    <select class="form-control" name="sortBy">
+                        <option value="asc">First old</option>
+                        <option value="desc">First new</option>
+                    </select>
+                    </div>
+
+            <div class="col-sm-3">
+                    <button type="submit" class="btn btn-large btn-block btn-secondary"/>sort</button>
+                </form>
+                </div>
+
+            <div class="col-sm-3">
+                <form th:action="@{/blog/search}" method="post">
+                    <input type="text" name="tag" placeholder="search by tag" class="form-control"/>
+            </div>
+
+            <div class="col-sm-3">
+                <div class="span9 btn-block">
+                    <button type="submit" class="btn btn-large btn-block btn-secondary"/>search</button>
+                </div>
+                </form>
+            </div>
+    </div>
+    </div>
+
     <h1>Блог сайта</h1>
+    <br/><b><span th:text="${message}"/></b>
     <div th:each="el : ${posts}" class="alert alert-info mt-2">
 
         <h3 th:text="${el.title}"/>
         <p th:text="${el.anons}"/>
-        <i style="font-size: small;"><p th:text="${el.thedate}"/></i>
+        <i style="font-size: small;"><span th:text="${el.thedate}"/> #<span th:text="${el.tag}"/></i><br/>
+
+        <div class="row">
         <a th:href="'/blog/' + ${el.id}" class="btn btn-secondary">Детальнее</a>
+        <span th:if="${ #authorization.expression('isAuthenticated()') }">
+
+    <form role="form" th:action=@{/blog} method="post">
+            <input type="hidden" name="id" th:value="${el.id}" class="form-control">
+            &nbsp;<button type="submit" class="btn btn-success">Добавить в избранное</button>
+        </form>
+        </span>
+        </div>
+
     </div>
 
 </div>

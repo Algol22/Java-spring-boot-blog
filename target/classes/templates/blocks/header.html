@@ -106,6 +106,12 @@ text-shadow: 1px 1px 1px black;
                 <li class="nav-item">
                     <a class="nav-link" href="/parse">Weather</a>
                 </li>
+
+                <span th:if="${ #authorization.expression('isAuthenticated()') }">
+            <li class="nav-item">
+                    <a class="nav-link" href="/favourites">Favourites <b><span th:text="${counter}"/></b></a>
+                </li>
+        </span>
 </ul>
             <div class="navbar-text mr-3">
                 <span sec:authorize="isAuthenticated()">Logged : <span sec:authentication="name"></span> |

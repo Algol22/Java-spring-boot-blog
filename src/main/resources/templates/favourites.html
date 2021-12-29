@@ -48,23 +48,24 @@
     </div>
 
     <h1>Блог сайта</h1>
-    <br/><b><span th:text="${message}"/></b>
+    <br/><b><span th:text="${messageFav}"/></b>
     <div th:each="el : ${posts}" class="alert alert-info mt-2">
 
         <h3 th:text="${el.title}"/>
-        <p th:text="${el.anons}"/>
-        <i style="font-size: small;"><span th:text="${el.thedate}"/> #<span th:text="${el.tag}"/></i><br/>
+
+
 
         <div class="row">
         <a th:href="'/blog/' + ${el.id}" class="btn btn-secondary">Детальнее</a>
         <span th:if="${ #authorization.expression('isAuthenticated()') }">
 
-    <form role="form" th:action=@{/blog} method="post">
+            <form role="form" th:action=@{/blog/fav/remove} method="post">
             <input type="hidden" name="id" th:value="${el.id}" class="form-control">
-            &nbsp;<button type="submit" class="btn btn-success">Добавить в избранное</button>
+            &nbsp;<button type="submit" class="btn btn-success">Удалить из избранных</button>
         </form>
         </span>
         </div>
+
 
     </div>
 

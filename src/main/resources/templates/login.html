@@ -17,7 +17,7 @@
 <main>
 
     <div class="container mt-5">
-
+        <h1>Login</h1>
     <div th:if="${param.error}">
     Invalid username and password.
 </div>
@@ -25,10 +25,10 @@
     You have been logged out.
 </div>
         <b><span th:text="${message}"/></b> <br>
-<form th:action="${path}" method="post">
+<form th:action="@{/login}" method="post">
     <div><label> User Name: <input type="text" name="username" class="form-control"/> </label></div>
     <div><label> Password: <input type="password" name="password" class="form-control"/> </label></div>
-    <div><input type="submit" value="Sign In" class="btn btn-secondary"/></div>
+    <div><input type="submit" value="Log in" class="btn btn-secondary"/></div>
 </form>
         <div th:insert="blocks/footer :: footer"></div>
 </body>

@@ -2,7 +2,7 @@ package com.springboot.blog.controllers;
 
 import com.springboot.blog.domain.Role;
 import com.springboot.blog.domain.User;
-import com.springboot.blog.repos.UserRepo;
+import com.springboot.blog.repo.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
@@ -35,6 +35,15 @@ public class UserController {
 
         return "userEdit";
     }
+
+
+    @GetMapping("{user}/del")
+    public String userDelete(@PathVariable User user, Model model) {
+        User userdel = userRepo.findById(user.getId()).orElseThrow();
+        userRepo.delete(userdel);
+        return "redirect:/user";
+    }
+
 
     @PostMapping
     public String userSave(

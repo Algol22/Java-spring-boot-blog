@@ -1,24 +1,33 @@
 <!DOCTYPE HTML>
+<html lang="ru">
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
+    <title th:text="${title}"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 </head>
 <body>
+<header th:insert="blocks/header :: header"></header>
 
 
 
-<div class="container">
 
-    <div class="starter-template">
-        <h1>403 - Access is denied</h1>
-        <div th:inline="text">Hello '[[${#httpServletRequest.remoteUser}]]',
-            you do not have permission to access this page.</div>
+
+<main>
+    <div class="container mt-5">
+
+        <h1>
+           Oops. We got an error
+        </h1>
+
     </div>
 
-</div>
-<!-- /.container -->
 
 
+</main>
 
+
+<div th:insert="blocks/footer :: footer"></div>
 </body>
 </html>

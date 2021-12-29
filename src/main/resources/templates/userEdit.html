@@ -16,19 +16,31 @@
 
 <main>
     <div th:if="${ #authorization.expression('isAuthenticated()') and #strings.contains(#authentication.principal.authorities,'ADMIN')}">
+        <div class="container mt-5">
     <form action="/user" method="post">
-        <input type="text" name="username" value="${user.username}">
-        <#list roles as role>
-        <div>
-            <div th:each="el : ${users}">
-            <label><input type="checkbox" name="${role}" ${el.roles?seq_contains(role)?string("checked", "")}>${role}</label>
-        </div>
-    </#list>
-    <input type="hidden" value="${el.id}" name="userId">
+
+            <input type="text" name="username" th:field="${user.username}"/><br/>
+
+
+
+
+
+
+        <td th:each="role : ${roles}">
+            <div>
+                <input type="checkbox" th:name="${role}" th:checked="${#lists.contains(user.roles, role)}"
+                       th:utext="${role}">
+            </div>
+        </td>
+
+<!--        <span th:each="el : ${user}" >-->
+    <input type="hidden" th:value="${user.id}" name="userId">
+<!--        </span>-->
     <input type="hidden" value="${_csrf.token}" name="_csrf">
     <button class="btn btn-secondary" type="submit">Save</button>
-    </form>
 
+    </form>
+    </div>
     </div>
 </main>
 

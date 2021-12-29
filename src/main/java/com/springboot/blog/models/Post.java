@@ -1,7 +1,9 @@
 package com.springboot.blog.models;
 import org.apache.tomcat.jni.Address;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import java.util.Date;
 import java.util.Set;
 
 @Entity
@@ -14,9 +16,19 @@ public class Post {
     @OneToMany(mappedBy = "post", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Set <Comment> comments;
 
-    private String title, anons, full_text;
-    private String thedate;
+    private String title, anons, full_text, tag;
+
+    @Temporal(TemporalType.DATE)
+    @Column(name = "thedate")
+    @DateTimeFormat(pattern = "dd-MM-yyyy")
+    private Date thedate;
+
     private int views;
+
+    public Post(Long id, String title){
+        this.title = title;
+        this.id =id;
+    }
 
     public Long getId() {
         return id;
@@ -58,11 +70,11 @@ public class Post {
         this.views = views;
     }
 
-    public String getThedate() {
+    public Date getThedate() {
         return thedate;
     }
 
-    public void setThedate(String thedate) {
+    public void setThedate(Date thedate) {
         this.thedate = thedate;
     }
 
@@ -77,11 +89,21 @@ public class Post {
         this.comments = comments;
     }
 
-    public Post(String title, String anons, String full_text, String thedate) {
+    public String getTag() {
+        return tag;
+    }
+
+    public void setTag(String tag) {
+        this.tag = tag;
+    }
+
+    public Post(String title, String anons, String full_text, String tag, Date thedate) {
         this.title = title;
         this.anons = anons;
         this.full_text = full_text;
         this.thedate = thedate;
+        this.tag = tag;
     }
+
 
 }

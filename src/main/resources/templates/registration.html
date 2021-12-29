@@ -17,10 +17,19 @@
 <main>
 
     <div class="container mt-5">
+        <h1>Registration</h1>
         <b><span th:text="${message}"/></b> <br>
-<form th:action="${path}" method="post">
-    <div><label> User Name: <input type="text" name="username" class="form-control"/> </label></div>
-    <div><label> Password: <input type="password" name="password" class="form-control"/> </label></div>
+<form th:action="${path}" th:object="${user}" method="post">
+    <div><label> User Name: <input type="text" th:field="*{username}" name="username" id="name" class="form-control"/> </label>
+        <div th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Name error</div>
+    </div>
+
+
+    <div><label> Password: <input type="password" th:field="*{password}" name="password" id="password" class="form-control"/> </label>
+        <div th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password error</div>
+    </div>
+
+
     <div><input type="submit" value="Registration" class="btn btn-secondary"/></div>
 </form>
         <div th:insert="blocks/footer :: footer"></div>
