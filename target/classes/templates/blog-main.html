@@ -17,23 +17,21 @@
 <main>
 
 <div class="container mt-5">
+
     <div class="alert alert-info mt-2">
         <div class="row">
 
             <div class="col-sm-3">
                 <form role="form" id="sendAddress" th:action=@{/blog} method="post">
-
                         <input type="hidden" name="sortBy" th:value="asc" class="form-control">
-
-                    <button type="submit" class="btn btn-large btn-block btn-secondary"/>sort old</button>
+                    <button type="submit" class="btn  btn-block btn-secondary"/>sort old</button>
                 </form>
-
                     </div>
 
             <div class="col-sm-3">
                 <form role="form" id="sendAddress" th:action=@{/blog} method="post">
                     <input type="hidden" name="sortBy" th:value="desc" class="form-control">
-                    <button type="submit" class="btn btn-large btn-block btn-secondary"/>sort new</button>
+                    <button type="submit" class="btn  btn-block btn-secondary"/>sort new</button>
                 </form>
                 </div>
 
@@ -41,17 +39,16 @@
                 <form th:action="@{/blog/search}" method="post">
                     <input type="text" name="tag" placeholder="search by tag" class="form-control"/>
             </div>
-
             <div class="col-sm-3">
                 <div class="span9 btn-block">
-                    <button type="submit" class="btn btn-large btn-block btn-secondary"/>search</button>
+                    <button type="submit" class="btn btn-block btn-secondary"/>search</button>
                 </div>
                 </form>
             </div>
     </div>
     </div>
 
-    <h1>Блог сайта</h1>
+    <h1>Blog</h1>
     <br/><b><span th:text="${message}"/></b>
     <div th:each="el : ${posts}" class="alert alert-info mt-2">
 
@@ -60,7 +57,7 @@
         <i style="font-size: small;"><span th:text="${el.thedate}"/> #<span th:text="${el.tag}"/></i><br/>
 
         <div class="row">
-        <a th:href="'/blog/' + ${el.id}" class="btn btn-secondary">Детальнее</a>
+            &nbsp;<a th:href="'/blog/' + ${el.id}" class="btn btn-secondary">Детальнее</a>
         <span th:if="${ #authorization.expression('isAuthenticated()') }">
 
     <form role="form" th:action=@{/blog} method="post">
