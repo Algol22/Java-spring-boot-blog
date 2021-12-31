@@ -22,14 +22,18 @@
 
             <div class="col-sm-3">
                 <form role="form" id="sendAddress" th:action=@{/blog} method="post">
-                    <select class="form-control" name="sortBy">
-                        <option value="asc">First old</option>
-                        <option value="desc">First new</option>
-                    </select>
+
+                        <input type="hidden" name="sortBy" th:value="asc" class="form-control">
+
+                    <button type="submit" class="btn btn-large btn-block btn-secondary"/>sort old</button>
+                </form>
+
                     </div>
 
             <div class="col-sm-3">
-                    <button type="submit" class="btn btn-large btn-block btn-secondary"/>sort</button>
+                <form role="form" id="sendAddress" th:action=@{/blog} method="post">
+                    <input type="hidden" name="sortBy" th:value="desc" class="form-control">
+                    <button type="submit" class="btn btn-large btn-block btn-secondary"/>sort new</button>
                 </form>
                 </div>
 
