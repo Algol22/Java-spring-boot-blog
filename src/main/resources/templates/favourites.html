@@ -17,41 +17,41 @@
 <main>
 
 <div class="container mt-5">
-    <div class="alert alert-info mt-2">
-        <div class="row">
+<!--    <div class="alert alert-info mt-2">-->
+<!--        <div class="row">-->
 
-            <div class="col-sm-3">
-                <form role="form" id="sendAddress" th:action=@{/blog} method="post">
-                    <select class="form-control" name="sortBy">
-                        <option value="asc">First old</option>
-                        <option value="desc">First new</option>
-                    </select>
-                    </div>
+<!--            <div class="col-sm-3">-->
+<!--                <form role="form" id="sendAddress" th:action=@{/blog} method="post">-->
+<!--                    <select class="form-control" name="sortBy">-->
+<!--                        <option value="asc">First old</option>-->
+<!--                        <option value="desc">First new</option>-->
+<!--                    </select>-->
+<!--                    </div>-->
 
-            <div class="col-sm-3">
-                    <button type="submit" class="btn btn-large btn-block btn-secondary"/>sort</button>
-                </form>
-                </div>
+<!--            <div class="col-sm-3">-->
+<!--                    <button type="submit" class="btn btn-large btn-block btn-secondary"/>sort</button>-->
+<!--                </form>-->
+<!--                </div>-->
 
-            <div class="col-sm-3">
-                <form th:action="@{/blog/search}" method="post">
-                    <input type="text" name="tag" placeholder="search by tag" class="form-control"/>
-            </div>
+<!--            <div class="col-sm-3">-->
+<!--                <form th:action="@{/blog/search}" method="post">-->
+<!--                    <input type="text" name="tag" placeholder="search by tag" class="form-control"/>-->
+<!--            </div>-->
 
-            <div class="col-sm-3">
-                <div class="span9 btn-block">
-                    <button type="submit" class="btn btn-large btn-block btn-secondary"/>search</button>
-                </div>
-                </form>
-            </div>
-    </div>
-    </div>
+<!--            <div class="col-sm-3">-->
+<!--                <div class="span9 btn-block">-->
+<!--                    <button type="submit" class="btn btn-large btn-block btn-secondary"/>search</button>-->
+<!--                </div>-->
+<!--                </form>-->
+<!--            </div>-->
+<!--    </div>-->
+<!--    </div>-->
 
-    <h1>Блог сайта</h1>
+    <h1>Favourites</h1>
     <br/><b><span th:text="${messageFav}"/></b>
     <div th:each="el : ${posts}" class="alert alert-info mt-2">
 
-        <h3 th:text="${el.title}"/>
+        <h5 th:text="${el.title}"/>
 
 
 

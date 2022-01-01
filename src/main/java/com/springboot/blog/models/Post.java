@@ -1,4 +1,5 @@
 package com.springboot.blog.models;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.apache.tomcat.jni.Address;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -13,6 +14,7 @@ public class Post {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @JsonManagedReference
     @OneToMany(mappedBy = "post", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Set <Comment> comments;
 

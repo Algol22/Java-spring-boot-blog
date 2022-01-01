@@ -1,6 +1,7 @@
 package com.springboot.blog.models;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.springboot.blog.domain.User;
 
 import javax.persistence.*;
@@ -17,7 +18,7 @@ public class Comment {
 
 
 
-
+    @JsonBackReference
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id")
     private Post post;

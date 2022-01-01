@@ -36,7 +36,8 @@
                 <button class="btn btn-secondary" type="submit">Удалить</button>
             </form>
                 </div>
-            <b>Comments:</b><br/>
+
+            <br/><b><span th:text="${message}"/></b><br/>
             <div th:each="al : ${comments}" class="alert alert-info mt-2">
 
                 <b> <span th:text="${al.getUserdb()}"/></b> /   <i style="font-size: small;"><span th:text="${al.getCommentDate()}"/></i>

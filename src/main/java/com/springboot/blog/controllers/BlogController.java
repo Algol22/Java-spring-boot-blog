@@ -120,7 +120,12 @@ public class BlogController {
         model.addAttribute("post", res);
 
         Set<Comment> comments = post.get().getComments();
-        model.addAttribute("comments", comments);
+        if(comments.stream().toArray().length>0) {
+            model.addAttribute("comments", comments);
+            model.addAttribute("message", "Comments:");
+        }else{
+            model.addAttribute("message", "");
+        }
         return "blog-details";
 
     }
