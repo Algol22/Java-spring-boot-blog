@@ -26,7 +26,7 @@ public class ApiRestController {
     @Autowired
     private PostRepository postRepository;
 
-    @GetMapping
+    @GetMapping(produces = "application/json;charset=UTF-8")
     public Iterable <Post> postLists() {
         Iterable <Post> allPostsFind = postRepository.findAll();
         List<Post> allPostsList = new ArrayList<>();
