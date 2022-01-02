@@ -137,8 +137,8 @@ public class BlogController {
 
     }
 
-    @PostMapping("/blog/search")
-    public String blogSearch(@RequestParam String tag, Model model){
+    @GetMapping("/blog/search/{tag}")
+    public String blogSearch(@PathVariable String tag, Model model){
         if(tag.isEmpty()){
             Iterable<Post> posts = postRepository.findAll();
             model.addAttribute("posts", posts);
