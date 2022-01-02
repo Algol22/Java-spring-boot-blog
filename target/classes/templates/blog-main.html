@@ -66,7 +66,17 @@
         </span>
         </div>
 
+
     </div>
+    <div class="d-flex justify-content-center">
+        <span th:if="${previouspage >1}"><a class="btn btn-secondary" th:text="${firstpage}" th:href="'/blog/page/' +${firstpage}"/></span>
+        <span th:if="${previouspage >0}"><a class="btn btn-secondary" th:text="${previouspage}" th:href="'/blog/page/' +${previouspage}"/></span>
+        <span th:if="${currentpage}"> <a class="btn btn-success disabled" th:text="${currentpage}" th:href="'/blog/page/' +${currentpage}"/></span>
+        <span th:if="${nextpage !=currentpage}">  <a class="btn btn-secondary" th:text="${nextpage}" th:href="'/blog/page/' +${nextpage}"/></span>
+        <span th:if="${nextpage <lastpage}"> <a class="btn btn-secondary" th:text="${lastpage}" th:href="'/blog/page/' +${lastpage}"/></span>
+
+    </div>
+
 
 </div>
 

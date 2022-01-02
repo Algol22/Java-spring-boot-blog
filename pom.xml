@@ -102,6 +102,12 @@
 			<version>6.2.0.Final</version>
 		</dependency>
 
+		<!-- pagination -->
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-collections4</artifactId>
+			<version>4.1</version>
+		</dependency>
 
 	</dependencies>
 	

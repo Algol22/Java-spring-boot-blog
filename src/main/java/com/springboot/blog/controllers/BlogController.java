@@ -10,6 +10,7 @@ import com.springboot.blog.repo.CommentRepository;
 import com.springboot.blog.repo.FavRepository;
 import com.springboot.blog.repo.PostRepository;
 import com.springboot.blog.repo.UserRepo;
+import org.apache.commons.collections4.IterableUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -40,10 +41,60 @@ public class BlogController {
     public String blogMain(Model model){
 
         Iterable<Post> posts = postRepository.findAll();
-        model.addAttribute("posts", posts);
+      int totalPosts = IterableUtils.size(posts);
+      int numberOfPosts=10;
+
+        List<Post> result = new ArrayList<>();
+        posts.forEach(result::add);
+        model.addAttribute("posts", result);
+
+        if(totalPosts>numberOfPosts) {
+            model.addAttribute("currentpage", 1);
+            model.addAttribute("nextpage", 2);
+        }
+        return "blog-main";
+    }
+
+
+
+
+
+    @GetMapping("/blog/page/{pagenumber}")
+    public String blogMain(@PathVariable int pagenumber, Model model) {
+        Iterable<Post> posts = postRepository.findAll();
+        int totalPosts = IterableUtils.size(posts);
+        int pages=0;
+        int numberOfPosts=10;
+        int nextpage = pagenumber + 1;
+        if(totalPosts<numberOfPosts) { nextpage=0; }
+
+        if(totalPosts>numberOfPosts){ pages =  (int)Math.round((totalPosts/ numberOfPosts)+0.5); }
+        List<Post> result = new ArrayList<>();
+        posts.forEach(result::add);
+
+        if(pagenumber<2) {
+            result.subList(numberOfPosts * pagenumber, result.size()).clear();
+
+        }else if((pagenumber*numberOfPosts)>totalPosts){
+            result.subList(0, numberOfPosts*(pagenumber-1)).clear();
+            nextpage=nextpage-1;
+
+        } else if((pagenumber*numberOfPosts)<totalPosts){
+            result.subList(0, (pagenumber-1)*numberOfPosts).clear();
+            result.subList(0, totalPosts-(pagenumber*numberOfPosts)).clear();
+        }
+
+        model.addAttribute("posts", result);
+        model.addAttribute("firstpage",1);
+        model.addAttribute("nextpage", nextpage);
+        model.addAttribute("previouspage", pagenumber-1);
+        model.addAttribute("currentpage", pagenumber);
+        model.addAttribute("lastpage", pages);
         return "blog-main";
 
     }
+
+
 
     @GetMapping("/blog/add")
     public String blogAdd(Model model){
