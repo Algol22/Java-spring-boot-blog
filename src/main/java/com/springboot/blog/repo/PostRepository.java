@@ -12,6 +12,11 @@ import java.util.List;
 
 public interface PostRepository extends CrudRepository<Post, Long> {
 
+
+    @Query("SELECT u FROM Post u ORDER BY u.thedate DESC")
+    List<Post> findAllPosts();
+
+
     @Query("SELECT u FROM Post u WHERE u.tag = LOWER(:tag)")
     List<Post> retrieveByTag(@Param("tag") String tag);
 

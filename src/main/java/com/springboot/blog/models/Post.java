@@ -4,6 +4,7 @@ import org.apache.tomcat.jni.Address;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.Set;
 
@@ -20,10 +21,10 @@ public class Post {
 
     private String title, anons, full_text, tag;
 
-    @Temporal(TemporalType.DATE)
+    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "thedate")
-    @DateTimeFormat(pattern = "dd-MM-yyyy")
-    private Date thedate;
+    @DateTimeFormat
+    Date thedate;
 
     private int views;
 

@@ -20,6 +20,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 @Controller
@@ -40,7 +42,7 @@ public class BlogController {
     @GetMapping("/blog")
     public String blogMain(Model model){
 
-        Iterable<Post> posts = postRepository.findAll();
+        Iterable<Post> posts = postRepository.findAllPosts();
       int totalPosts = IterableUtils.size(posts);
       int numberOfPosts=10;
 
@@ -61,7 +63,7 @@ public class BlogController {
 
     @GetMapping("/blog/page/{pagenumber}")
     public String blogMain(@PathVariable int pagenumber, Model model) {
-        Iterable<Post> posts = postRepository.findAll();
+        Iterable<Post> posts = postRepository.findAllPosts();
         int totalPosts = IterableUtils.size(posts);
         int pages=0;
         int numberOfPosts=10;
