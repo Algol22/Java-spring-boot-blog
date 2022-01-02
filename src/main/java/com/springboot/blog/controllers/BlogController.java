@@ -155,6 +155,27 @@ public class BlogController {
         return "blog-main";
     }
 
+
+    @PostMapping("/blog/search")
+    public String blogSearchPost(@RequestParam String tag, Model model){
+        if(tag.isEmpty()){
+            Iterable<Post> posts = postRepository.findAll();
+            model.addAttribute("posts", posts);
+        }else {
+
+            Iterable<Post> posts = postRepository.retrieveByTag(tag);
+
+            if (!posts.iterator().hasNext()) {
+                model.addAttribute("message", "Not found");
+            } else {
+                model.addAttribute("posts", posts);
+            }
+        }
+        return "blog-main";
+    }
+
+
+
     @GetMapping("/403")
     public String error403() {
         return "/403";
