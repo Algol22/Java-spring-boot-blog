@@ -189,7 +189,7 @@ public class BlogController {
                 Post post = new Post(title, anons, full_text, tag, date, 0, fileName);
                 postRepository.save(post);
 
-                String uploadDir = "post-photos/" + post.getId();
+                String uploadDir = "postphotos/" + post.getId();
 
                 try {
                     FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
@@ -340,7 +340,7 @@ public class BlogController {
         postRepository.delete(post);
 
         try {
-            FileUtils.deleteDirectory(new File("post-photos/"+id+"/"));
+            FileUtils.deleteDirectory(new File("postphotos/"+id+"/"));
         }
         catch(Exception e)
         {

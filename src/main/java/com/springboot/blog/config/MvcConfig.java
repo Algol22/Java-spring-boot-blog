@@ -19,7 +19,7 @@ public class MvcConfig implements WebMvcConfigurer {
     //File uploads
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        exposeDirectory("post-photos", registry);
+        exposeDirectory("postphotos", registry);
     }
 
     private void exposeDirectory(String dirName, ResourceHandlerRegistry registry) {
