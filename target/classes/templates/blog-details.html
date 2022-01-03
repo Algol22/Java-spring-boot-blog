@@ -22,7 +22,7 @@
 
             <h3 th:text="${el.title}"/>
             <p th:text="${el.full_text}"/>
-            <span th:if="${!#strings.isEmpty(el.photos)}"><img th:src="@{${'/post-photos/'+el.id+'/'+el.photos}}"/><br/></span>
+            <span th:if="${!#strings.isEmpty(el.photos)}"><img th:src="${'/post-photos/'+el.id+'/'+el.photos}"/><br/></span>
             <i style="font-size: small;"> <span th:text="${el.thedate}"/> #<span th:text="${el.tag}"/></i><br/>
 <!--            <p><b>Просмотры: </b><span th:text="${el.views}"/></p>-->
 
