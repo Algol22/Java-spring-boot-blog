@@ -23,6 +23,7 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
+import java.util.stream.Collectors;
 
 @Controller
 public class BlogController {
@@ -131,7 +132,7 @@ public class BlogController {
     @PostMapping("/blog/add")
     public String blogPostAdd(@RequestParam String title, @RequestParam String anons, @RequestParam String tag,@RequestParam String full_text, Model model){
         Date date = new Date();
-        Post post = new Post(title, anons, full_text, tag, date);
+        Post post = new Post(title, anons, full_text, tag, date, false);
         postRepository.save(post);
         return "redirect:/blog";
 
@@ -259,6 +260,7 @@ public class BlogController {
             String userName = authentication.getName();
             User user = userRepo.findByUsername(userName);
             Favourites favourite = new Favourites(user.getId(), id);
+            postRepository.updateFav(id, true);
             favRepository.save(favourite);
             Iterable<Post> posts = postRepository.findAll();
             model.addAttribute("posts", posts);

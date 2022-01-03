@@ -61,7 +61,8 @@
 
     <form role="form" th:action=@{/blog} method="post">
             <input type="hidden" name="id" th:value="${el.id}" class="form-control">
-            &nbsp;<button type="submit" class="btn btn-success">Добавить в избранное</button>
+        <span th:if="${el.isfavourite==false}"><button type="submit" class="btn btn-success">Добавить в избранное</button></span>
+        <span th:if="${el.isfavourite==true}"><button type="submit" class="btn btn-success disabled" style="cursor:default;">Добавить в избранное</button></span>
         </form>
         </span>
         </div>

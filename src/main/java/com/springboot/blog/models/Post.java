@@ -20,6 +20,7 @@ public class Post {
     private Set <Comment> comments;
 
     private String title, anons, full_text, tag;
+    private boolean isfavourite;
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "thedate")
@@ -100,13 +101,34 @@ public class Post {
         this.tag = tag;
     }
 
-    public Post(String title, String anons, String full_text, String tag, Date thedate) {
+    public Post(String title, String anons, String full_text, String tag, Date thedate,boolean isfavourite) {
         this.title = title;
         this.anons = anons;
         this.full_text = full_text;
         this.thedate = thedate;
         this.tag = tag;
+        this.isfavourite =isfavourite;
     }
 
+    public boolean getIsfavourite() {
+        return isfavourite;
+    }
 
+    public void setIsfavourite(boolean isfavourite) {
+        isfavourite = isfavourite;
+    }
+
+    @Override
+    public String toString() {
+        return "Post{" +
+                "id=" + id +
+                ", comments=" + comments +
+                ", title='" + title + '\'' +
+                ", anons='" + anons + '\'' +
+                ", full_text='" + full_text + '\'' +
+                ", tag='" + tag + '\'' +
+                ", thedate=" + thedate +
+                ", views=" + views +
+                '}';
+    }
 }
