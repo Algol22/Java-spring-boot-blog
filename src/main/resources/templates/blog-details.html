@@ -39,15 +39,14 @@
 
             <br/><b><span th:text="${message}"/></b><br/>
             <div th:each="al : ${comments}" class="alert alert-info mt-2">
-
                 <b> <span th:text="${al.getUserdb()}"/></b> /   <i style="font-size: small;"><span th:text="${al.getCommentDate()}"/></i>
                 <p th:text="${al.getText()}"/>
 
-                <div th:if="${ #authorization.expression('isAuthenticated()') and #strings.contains(#authentication.principal.authorities,'ADMIN')}">
+                <span th:if="${ #authorization.expression('isAuthenticated()') and #strings.contains(#authentication.principal.authorities,'ADMIN')}">
                     <form th:action="'/blog/'  + ${el.id} +'/'+ ${al.getId()} + '/removecomment'" method="post">
                         <button class="btn btn-secondary" type="submit">Удалить</button>
                     </form>
-                </div>
+                </span>
             </div>
 
             <div th:if="${ #authorization.expression('isAuthenticated()')}">
