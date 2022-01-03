@@ -30,6 +30,15 @@ public class Post {
     private String title, anons, full_text, tag;
     private int numberofcomments;
 
+    @Column(nullable = true, length = 64)
+    private String photos;
+    @Transient
+    public String getPhotosImagePath() {
+        if (photos == null || id == null) return null;
+
+        return "/post-photos/" + id + "/" + photos;
+    }
+
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "thedate")
     @DateTimeFormat
@@ -109,13 +118,14 @@ public class Post {
         this.tag = tag;
     }
 
-    public Post(String title, String anons, String full_text, String tag, Date thedate,int numberofcomments) {
+    public Post(String title, String anons, String full_text, String tag, Date thedate,int numberofcomments, String photos) {
         this.title = title;
         this.anons = anons;
         this.full_text = full_text;
         this.thedate = thedate;
         this.tag = tag;
         this.numberofcomments = numberofcomments;
+        this.photos = photos;
     }
 
 
@@ -143,5 +153,13 @@ public class Post {
 
     public void setNumberofcomments(int numberofcomments) {
         this.numberofcomments = numberofcomments;
+    }
+
+    public String getPhotos() {
+        return photos;
+    }
+
+    public void setPhotos(String photos) {
+        this.photos = photos;
     }
 }
