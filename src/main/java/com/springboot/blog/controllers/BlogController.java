@@ -118,8 +118,12 @@ public class BlogController {
         Date date = new Date();
 
         Post post = postRepository.findById(id).orElseThrow();//если запись не найдена
-        Comment commentnew = new Comment(text, post, currentUser.getUsername(),formatter.format(date).toString() );
-        commentRepository.save(commentnew);
+        Comment commentnew = new Comment(text, post, currentUser.getUsername(),date);
+      commentRepository.save(commentnew);
+
+            int counter = commentRepository.countComments(id);
+            postRepository.updateComments(id, counter);
+
 
         return "redirect:/blog/"+id;
 
@@ -132,7 +136,7 @@ public class BlogController {
     @PostMapping("/blog/add")
     public String blogPostAdd(@RequestParam String title, @RequestParam String anons, @RequestParam String tag,@RequestParam String full_text, Model model){
         Date date = new Date();
-        Post post = new Post(title, anons, full_text, tag, date, false);
+        Post post = new Post(title, anons, full_text, tag, date, false,0);
         postRepository.save(post);
         return "redirect:/blog";
 

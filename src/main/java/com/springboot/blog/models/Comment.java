@@ -3,8 +3,10 @@ package com.springboot.blog.models;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.springboot.blog.domain.User;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 public class Comment {
@@ -13,7 +15,8 @@ public class Comment {
     private Long commentId;
     private String text;
     private String userdb;
-    private String commentDate;
+    @DateTimeFormat
+    private Date commentDate;
 
 
 
@@ -26,7 +29,7 @@ public class Comment {
     public Comment() {
     }
 
-    public Comment(String text, Post post, String userdb, String commentDate) {
+    public Comment(String text, Post post, String userdb, Date commentDate) {
         this.post= post;
         this.text = text;
         this.userdb =userdb;
@@ -79,11 +82,11 @@ public class Comment {
         this.userdb = userdb;
     }
 
-    public String getCommentDate() {
+    public Date getCommentDate() {
         return commentDate;
     }
 
-    public void setCommentDate(String commentDate) {
+    public void setCommentDate(Date commentDate) {
         this.commentDate = commentDate;
     }
 }

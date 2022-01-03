@@ -21,6 +21,7 @@ public class Post {
 
     private String title, anons, full_text, tag;
     private boolean isfavourite;
+    private int numberofcomments;
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "thedate")
@@ -101,13 +102,14 @@ public class Post {
         this.tag = tag;
     }
 
-    public Post(String title, String anons, String full_text, String tag, Date thedate,boolean isfavourite) {
+    public Post(String title, String anons, String full_text, String tag, Date thedate,boolean isfavourite, int numberofcomments) {
         this.title = title;
         this.anons = anons;
         this.full_text = full_text;
         this.thedate = thedate;
         this.tag = tag;
         this.isfavourite =isfavourite;
+        this.numberofcomments = numberofcomments;
     }
 
     public boolean getIsfavourite() {
@@ -130,5 +132,13 @@ public class Post {
                 ", thedate=" + thedate +
                 ", views=" + views +
                 '}';
+    }
+
+    public int getNumberofcomments() {
+        return numberofcomments;
+    }
+
+    public void setNumberofcomments(int numberofcomments) {
+        this.numberofcomments = numberofcomments;
     }
 }

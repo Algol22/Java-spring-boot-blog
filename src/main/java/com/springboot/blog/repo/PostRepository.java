@@ -40,4 +40,9 @@ public interface PostRepository extends CrudRepository<Post, Long> {
     @Query(value ="update post set isfavourite=:liked where id=:id", nativeQuery = true)
     public void updateFav(@Param("id") Long id, @Param("liked") Boolean liked);
 
+    @Modifying
+    @Transactional
+    @Query(value ="update post set numberofcomments=:numberofcomments where id=:id", nativeQuery = true)
+    public void updateComments(@Param("id") Long id, @Param("numberofcomments") int numberofcomments);
+
 }
