@@ -19,6 +19,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -40,16 +41,32 @@ public class BlogController {
     @Autowired
     private FavRepository favRepository;
 
+
+
     @GetMapping("/blog")
-    public String blogMain(Model model){
+    public String blogMain(Model model, Principal user){
 
         Iterable<Post> posts = postRepository.findAllPosts();
-      int totalPosts = IterableUtils.size(posts);
-      int numberOfPosts=10;
+        List<Post> resultPosts = new ArrayList<>();
+        posts.forEach(resultPosts::add);
 
-        List<Post> result = new ArrayList<>();
-        posts.forEach(result::add);
-        model.addAttribute("posts", result);
+        if (user != null) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String userName = authentication.getName();
+            User usercheck = userRepo.findByUsername(userName);
+            Iterable<Long> favourites = favRepository.findFavourites(usercheck.getId());
+            List<Long> resultFavourites = new ArrayList<>();
+            favourites.forEach(resultFavourites::add);
+            model.addAttribute("favourites", favourites);
+        }
+
+
+
+        int totalPosts = IterableUtils.size(posts);
+        int numberOfPosts=10;
+
+        model.addAttribute("posts", resultPosts);
+
 
         if(totalPosts>numberOfPosts) {
             model.addAttribute("currentpage", 1);
@@ -63,7 +80,7 @@ public class BlogController {
 
 
     @GetMapping("/blog/page/{pagenumber}")
-    public String blogMain(@PathVariable int pagenumber, Model model) {
+    public String blogMain(@PathVariable int pagenumber, Model model, Principal user) {
         Iterable<Post> posts = postRepository.findAllPosts();
         int totalPosts = IterableUtils.size(posts);
         int pages=0;
@@ -85,6 +102,19 @@ public class BlogController {
         } else if((pagenumber*numberOfPosts)<totalPosts){
             result.subList(0, (pagenumber-1)*numberOfPosts).clear();
             result.subList(0, totalPosts-(pagenumber*numberOfPosts)).clear();
+        }
+
+
+
+
+        if (user != null) {
+            Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+            String userName = authentication.getName();
+            User usercheck = userRepo.findByUsername(userName);
+            Iterable<Long> favourites = favRepository.findFavourites(usercheck.getId());
+            List<Long> resultFavourites = new ArrayList<>();
+            favourites.forEach(resultFavourites::add);
+            model.addAttribute("favourites", favourites);
         }
 
         model.addAttribute("posts", result);
@@ -136,17 +166,30 @@ public class BlogController {
     @PostMapping("/blog/add")
     public String blogPostAdd(@RequestParam String title, @RequestParam String anons, @RequestParam String tag,@RequestParam String full_text, Model model){
         Date date = new Date();
-        Post post = new Post(title, anons, full_text, tag, date, false,0);
+        Post post = new Post(title, anons, full_text, tag, date,0);
         postRepository.save(post);
         return "redirect:/blog";
 
     }
 
     @GetMapping("/blog/search/{tag}")
-    public String blogSearch(@PathVariable String tag, Model model){
+    public String blogSearch(@PathVariable String tag, Model model, Principal user){
+        if (user != null) {
+            Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+            String userName = authentication.getName();
+            User usercheck = userRepo.findByUsername(userName);
+            Iterable<Long> favourites = favRepository.findFavourites(usercheck.getId());
+            List<Long> resultFavourites = new ArrayList<>();
+            favourites.forEach(resultFavourites::add);
+            model.addAttribute("favourites", favourites);
+        }
+
+
         if(tag.isEmpty()){
             Iterable<Post> posts = postRepository.findAll();
             model.addAttribute("posts", posts);
+
+
         }else {
 
             Iterable<Post> posts = postRepository.retrieveByTag(tag);
@@ -162,7 +205,19 @@ public class BlogController {
 
 
     @PostMapping("/blog/search")
-    public String blogSearchPost(@RequestParam String tag, Model model){
+    public String blogSearchPost(@RequestParam String tag, Model model, Principal user){
+
+        if (user != null) {
+            Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+            String userName = authentication.getName();
+            User usercheck = userRepo.findByUsername(userName);
+            Iterable<Long> favourites = favRepository.findFavourites(usercheck.getId());
+            List<Long> resultFavourites = new ArrayList<>();
+            favourites.forEach(resultFavourites::add);
+            model.addAttribute("favourites", favourites);
+        }
+
+
         if(tag.isEmpty()){
             Iterable<Post> posts = postRepository.findAll();
             model.addAttribute("posts", posts);
@@ -176,6 +231,7 @@ public class BlogController {
                 model.addAttribute("posts", posts);
             }
         }
+
         return "blog-main";
     }
 
@@ -257,14 +313,24 @@ public class BlogController {
 
 
     @PostMapping("/blog")
-    public String sortPosts(@RequestParam(required = false) String sortBy ,@RequestParam(required = false) Long id, Model model) {
+    public String sortPosts(@RequestParam(required = false) String sortBy ,@RequestParam(required = false) Long id, Model model, Principal user) {
 
-        if(id!=null){
+        if (user != null) {
             Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
             String userName = authentication.getName();
-            User user = userRepo.findByUsername(userName);
-            Favourites favourite = new Favourites(user.getId(), postRepository.findById(id).orElseThrow());
-            postRepository.updateFav(id, true);
+            User usercheck = userRepo.findByUsername(userName);
+            Iterable<Long> favourites = favRepository.findFavourites(usercheck.getId());
+            List<Long> resultFavourites = new ArrayList<>();
+            favourites.forEach(resultFavourites::add);
+            model.addAttribute("favourites", favourites);
+        }
+
+
+        if(id!=null) {
+            Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+            String userName = authentication.getName();
+            User useraddFavourites = userRepo.findByUsername(userName);
+            Favourites favourite = new Favourites(useraddFavourites.getId(), postRepository.findById(id).orElseThrow());
             favRepository.save(favourite);
             Iterable<Post> posts = postRepository.findAll();
             model.addAttribute("posts", posts);

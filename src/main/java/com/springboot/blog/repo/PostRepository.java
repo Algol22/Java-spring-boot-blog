@@ -35,10 +35,6 @@ public interface PostRepository extends CrudRepository<Post, Long> {
     @Query(value ="update post set anons=:anons, full_text=:full_text, tag=:tag, thedate=:thedate, title=:title where id =:id", nativeQuery = true)
     public void updateById(@Param("id") Long id, @Param("anons") String anons, @Param("full_text") String full_text, @Param("tag") String tag, @Param("thedate") Date thedate, @Param("title") String title);
 
-    @Modifying
-    @Transactional
-    @Query(value ="update post set isfavourite=:liked where id=:id", nativeQuery = true)
-    public void updateFav(@Param("id") Long id, @Param("liked") Boolean liked);
 
     @Modifying
     @Transactional

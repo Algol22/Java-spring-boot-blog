@@ -13,8 +13,7 @@ import javax.transaction.Transactional;
 import java.util.List;
 
 public interface FavRepository extends CrudRepository<Favourites, Long> {
-    @Query(value = "SELECT u.id FROM usr u WHERE u.username = LOWER(:name)", nativeQuery = true)
-    public List<User> findIdByName(@Param("name") String name);
+
 
     @Query(value = "select count (distinct u.post_id) from favourites u where u.user_id= :id", nativeQuery = true)
     public List<Long> countFavourites(@Param("id") Long id);
@@ -24,4 +23,7 @@ public interface FavRepository extends CrudRepository<Favourites, Long> {
     @Query(value = "delete from favourites where post_id= :id", nativeQuery = true)
     public void deleteFav(@Param("id") Long id);
 
+    @Transactional
+    @Query(value = "select post_id from favourites where user_id= :id", nativeQuery = true)
+    public List <Long> findFavourites(@Param("id") Long id);
 }

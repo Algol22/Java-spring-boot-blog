@@ -67,7 +67,6 @@ public class FavouritesController {
     @PostMapping("/blog/fav/remove")
     public String removeFav(@RequestParam Long id, Model model) {
     favRepository.deleteFav(id);
-    postRepository.updateFav(id,false);
     return "redirect:/favourites";
     }
 

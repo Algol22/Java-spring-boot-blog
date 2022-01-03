@@ -1,4 +1,6 @@
 package com.springboot.blog.models;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIdentityReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.apache.tomcat.jni.Address;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -12,7 +14,9 @@ import java.util.Set;
 public class Post {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "post_generator")
+    @SequenceGenerator(name="post_generator", sequenceName = "post_seq", allocationSize=50)
+    @Column(name = "id", updatable = false, nullable = false)
     private Long id;
 
     @JsonManagedReference
@@ -24,7 +28,6 @@ public class Post {
     private Set <Favourites> favourites;
 
     private String title, anons, full_text, tag;
-    private boolean isfavourite;
     private int numberofcomments;
 
     @Temporal(TemporalType.TIMESTAMP)
@@ -106,19 +109,15 @@ public class Post {
         this.tag = tag;
     }
 
-    public Post(String title, String anons, String full_text, String tag, Date thedate,boolean isfavourite, int numberofcomments) {
+    public Post(String title, String anons, String full_text, String tag, Date thedate,int numberofcomments) {
         this.title = title;
         this.anons = anons;
         this.full_text = full_text;
         this.thedate = thedate;
         this.tag = tag;
-        this.isfavourite =isfavourite;
         this.numberofcomments = numberofcomments;
     }
 
-    public boolean getIsfavourite() {
-        return isfavourite;
-    }
 
     public void setIsfavourite(boolean isfavourite) {
         isfavourite = isfavourite;

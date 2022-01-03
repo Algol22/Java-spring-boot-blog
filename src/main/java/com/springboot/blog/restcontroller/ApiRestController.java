@@ -6,6 +6,7 @@ import com.springboot.blog.exceptions.NotFoundException;
 import com.springboot.blog.models.Post;
 import com.springboot.blog.repo.PostRepository;
 import com.springboot.blog.repo.UserRepo;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.repository.query.Param;
@@ -31,6 +32,7 @@ public class ApiRestController {
         Iterable <Post> allPostsFind = postRepository.findAll();
         List<Post> allPostsList = new ArrayList<>();
         allPostsFind.forEach(allPostsList::add);
+
         return allPostsFind;
     }
 //    // GET all

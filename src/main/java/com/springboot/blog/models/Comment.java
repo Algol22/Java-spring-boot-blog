@@ -2,6 +2,7 @@ package com.springboot.blog.models;
 
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.springboot.blog.domain.User;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -11,7 +12,9 @@ import java.util.Date;
 @Entity
 public class Comment {
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "comment_generator")
+    @SequenceGenerator(name="comment_generator", sequenceName = "comment_seq", allocationSize=50)
+    @Column(name = "commentId", updatable = false, nullable = false)
     private Long commentId;
     private String text;
     private String userdb;

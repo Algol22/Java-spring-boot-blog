@@ -1,16 +1,22 @@
 package com.springboot.blog.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 
 @Entity
 public class Favourites {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "favourites_generator")
+    @SequenceGenerator(name="favourites_generator", sequenceName = "favourites_seq", allocationSize=50)
+    @Column(name = "id", updatable = false, nullable = false)
     private Long id;
 
     private Long userId;
 
+    @JsonBackReference
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "post_id")
     private Post post;

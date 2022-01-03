@@ -81,6 +81,10 @@ margin: 5px 5px 5px 5px;
                     <a class="nav-link" href="/blog">Blog</a>
                 </li>
 
+                <li class="nav-item">
+                    <a class="nav-link" href="/api">API</a>
+                </li>
+
                 <span th:if="${ #authorization.expression('isAuthenticated()') and #strings.contains(#authentication.principal.authorities,'ADMIN')}">
                 <li class="nav-item">
                     <a class="nav-link" href="/blog/add">Add</a>
