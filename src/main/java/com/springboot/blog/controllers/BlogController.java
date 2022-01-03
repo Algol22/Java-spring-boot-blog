@@ -263,7 +263,7 @@ public class BlogController {
             Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
             String userName = authentication.getName();
             User user = userRepo.findByUsername(userName);
-            Favourites favourite = new Favourites(user.getId(), id);
+            Favourites favourite = new Favourites(user.getId(), postRepository.findById(id).orElseThrow());
             postRepository.updateFav(id, true);
             favRepository.save(favourite);
             Iterable<Post> posts = postRepository.findAll();

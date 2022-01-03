@@ -42,7 +42,7 @@ public class FavouritesController {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String userName = authentication.getName();
         User user = userRepo.findByUsername(userName);
-        Favourites favourite = new Favourites(user.getId(), id);
+        Favourites favourite = new Favourites(user.getId(), postRepository.findById(id).orElseThrow());
         favRepository.save(favourite);
         Iterable<Post> posts = postRepository.findAll();
         model.addAttribute("posts", posts);

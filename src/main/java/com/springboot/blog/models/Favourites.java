@@ -10,11 +10,14 @@ public class Favourites {
     private Long id;
 
     private Long userId;
-    private Long postId;
 
-    public Favourites(Long userId, Long postId) {
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "post_id")
+    private Post post;
+
+    public Favourites(Long userId, Post post) {
         this.userId = userId;
-        this.postId = postId;
+        this.post = post;
     }
 
     public Long getUserId() {
@@ -29,11 +32,19 @@ public class Favourites {
         this.userId = userId;
     }
 
-    public Long getPostId() {
-        return postId;
+    public Long getId() {
+        return id;
     }
 
-    public void setPostId(Long postId) {
-        this.postId = postId;
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Post getPost() {
+        return post;
+    }
+
+    public void setPost(Post post) {
+        this.post = post;
     }
 }

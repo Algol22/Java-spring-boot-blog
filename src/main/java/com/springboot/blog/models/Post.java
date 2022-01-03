@@ -19,6 +19,10 @@ public class Post {
     @OneToMany(mappedBy = "post", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Set <Comment> comments;
 
+    @JsonManagedReference
+    @OneToMany(mappedBy = "post", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Set <Favourites> favourites;
+
     private String title, anons, full_text, tag;
     private boolean isfavourite;
     private int numberofcomments;
