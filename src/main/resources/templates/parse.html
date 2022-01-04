@@ -17,10 +17,10 @@
 <main>
 
     <div class="container mt-5">
-        <div class="jumbotron bg-dark text-white" style='
+        <div class="jumbotron bg-dark text-white" th:style="${'
            background-size: cover;
     height: 100%;
-    background-image: url("https://source.unsplash.com/1600x900/?weather"'>
+    background-image: url(https://source.unsplash.com/1600x900/?'+cityshow+')'}">
 
         <h1>Weather</h1>
         City: <span th:text="${cityshow}"/> <br>
