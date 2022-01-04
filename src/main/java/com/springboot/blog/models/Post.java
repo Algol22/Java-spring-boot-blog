@@ -32,12 +32,6 @@ public class Post {
 
     @Column(nullable = true, length = 64)
     private String photos;
-    @Transient
-    public String getPhotosImagePath() {
-        if (photos == null || id == null) return null;
-
-        return "/post-photos/" + id + "/" + photos;
-    }
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "thedate")
