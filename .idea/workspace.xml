@@ -6,10 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="90d31898-99e8-4e13-9a71-2efdfdeb194d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/post-photos/402" beforeDir="false" afterPath="$PROJECT_DIR$/postphotos/402" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/springboot/blog/config/MvcConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/springboot/blog/config/MvcConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/springboot/blog/controllers/BlogController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/springboot/blog/controllers/BlogController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/postphotos/452/7438329.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/postphotos/502/7438329.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/blog-main.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/blog-main.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/blog-main.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/blog-main.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,7 +53,7 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/static" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/static/img" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -61,18 +62,18 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\admin\Desktop\Blog Java\test\Java-spring-boot-blog\src\main\resources\static\img" />
+      <recent name="C:\Users\admin\Desktop\Blog Java\test\Java-spring-boot-blog\src\main\resources" />
       <recent name="C:\Users\admin\Desktop\Blog Java\test\Java-spring-boot-blog\src\main\resources\static" />
       <recent name="C:\Users\admin\Desktop\Blog Java\test\Java-spring-boot-blog\src\main\resources\templates" />
       <recent name="C:\Users\admin\Desktop\Blog Java\Java-spring-boot-blog\src\main\resources\templates" />
-      <recent name="C:\Users\admin\Desktop\Java\new" />
-      <recent name="C:\Users\admin\Desktop\Java\new\src\main\resources" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\admin\Desktop\Blog Java\test\Java-spring-boot-blog\webapp\images" />
+      <recent name="C:\Users\admin\Desktop\Blog Java\test\Java-spring-boot-blog\src\main\resources\static\img" />
       <recent name="C:\Users\admin\Desktop\Blog Java\test\Java-spring-boot-blog\src\main\resources\static" />
+      <recent name="C:\Users\admin\Desktop\Blog Java\test\Java-spring-boot-blog\webapp\images" />
       <recent name="C:\Users\admin\Desktop\Blog Java\test\Java-spring-boot-blog" />
       <recent name="C:\Users\admin\Desktop\Blog Java\test\Java-spring-boot-blog\src\main\resources" />
-      <recent name="C:\Users\admin\Desktop\Java\new\src\main\resources\templates\fragments" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="com.springboot.blog" />
