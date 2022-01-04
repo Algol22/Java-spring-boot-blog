@@ -29,6 +29,7 @@ public class Post {
 
     private String title, anons, full_text, tag;
     private int numberofcomments;
+    private String photoUrl;
 
     @Column(nullable = true, length = 64)
     private String photos;
@@ -112,7 +113,7 @@ public class Post {
         this.tag = tag;
     }
 
-    public Post(String title, String anons, String full_text, String tag, Date thedate,int numberofcomments, String photos) {
+    public Post(String title, String anons, String full_text, String tag, Date thedate,int numberofcomments, String photos, String photoUrl) {
         this.title = title;
         this.anons = anons;
         this.full_text = full_text;
@@ -120,6 +121,7 @@ public class Post {
         this.tag = tag;
         this.numberofcomments = numberofcomments;
         this.photos = photos;
+        this.photoUrl = photoUrl;
     }
 
 
@@ -155,5 +157,13 @@ public class Post {
 
     public void setPhotos(String photos) {
         this.photos = photos;
+    }
+
+    public String getPhotoUrl() {
+        return photoUrl;
+    }
+
+    public void setPhotoUrl(String photoUrl) {
+        this.photoUrl = photoUrl;
     }
 }

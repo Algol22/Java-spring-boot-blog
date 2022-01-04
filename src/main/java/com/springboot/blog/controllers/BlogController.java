@@ -31,6 +31,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.security.Principal;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
@@ -179,14 +181,11 @@ public class BlogController {
 
 
     @PostMapping("/blog/add")
-    public String blogPostAdd(@RequestParam String title, @RequestParam String anons, @RequestParam String tag, @RequestParam String full_text, @RequestParam("image") MultipartFile multipartFile, Model model){
+    public String blogPostAdd(@RequestParam String title, @RequestParam String anons, @RequestParam String tag, @RequestParam String full_text, @RequestParam String photoUrl, @RequestParam("image") MultipartFile multipartFile, Model model){
         String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
 
-
-
-
                 Date date = new Date();
-                Post post = new Post(title, anons, full_text, tag, date, 0, fileName);
+                Post post = new Post(title, anons, full_text, tag, date, 0, fileName, photoUrl);
                 postRepository.save(post);
 
                 String uploadDir = "src/main/webapp/WEB-INF/images/" + post.getId();
@@ -200,6 +199,31 @@ public class BlogController {
         return "redirect:/blog";
 
     }
+
+
+
+
+    @PostMapping("/blog/addphoto")
+    public String blogPostAddPhoto(@RequestParam("image") MultipartFile multipartFile, @RequestParam("id") Long id, Model model){
+        String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
+        postRepository.updatePhoto(id,fileName);
+        String uploadDir = "src/main/webapp/WEB-INF/images/" + id;
+
+        try {
+            FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return "redirect:/blog";
+
+    }
+
+
+
+
+
+
 
     @GetMapping("/blog/search/{tag}")
     public String blogSearch(@PathVariable String tag, Model model, Principal user){
@@ -322,12 +346,13 @@ public class BlogController {
 
 //редактирование записей - обращаемся в >model 'post'>postrepository> interface 'postrepository'
     @PostMapping("/blog/{id}/edit")
-    public String blogPostUpdate(@PathVariable(value="id") long id, @RequestParam String title, @RequestParam String anons, @RequestParam String tag, @RequestParam String full_text, Model model){
+    public String blogPostUpdate(@PathVariable(value="id") long id, @RequestParam String title, @RequestParam String anons, @RequestParam String tag, @RequestParam String full_text,@RequestParam String photoUrl, Model model){
         Post post = postRepository.findById(id).orElseThrow();//если запись не найдена
         post.setTitle(title);
         post.setAnons(anons);
         post.setTag(tag);
         post.setFull_text(full_text);
+        post.setPhotoUrl(photoUrl);
         postRepository.save(post);
         return "redirect:/blog";
 
@@ -340,17 +365,32 @@ public class BlogController {
         postRepository.delete(post);
 
         try {
+            Files.deleteIfExists(Path.of("src/main/webapp/WEB-INF/images/" + id + "/" + postRepository.findPhotoById(id) + "/"));
             FileUtils.deleteDirectory(new File("src/main/webapp/WEB-INF/images/"+id+"/"));
         }
         catch(Exception e)
         {
             System.out.println("Failed to Delete image !!");
         }
-
-
         return "redirect:/blog";
-
     }
+
+    @PostMapping("/blog/{id}/removephoto")
+    public String blogPhotoDelete(@PathVariable(value="id") long id, Model model){
+
+        postRepository.deletePhoto(id);
+        try {
+            Files.deleteIfExists(Path.of("src/main/webapp/WEB-INF/images/" + id + "/" + postRepository.findPhotoById(id) + "/"));
+            FileUtils.deleteDirectory(new File("src/main/webapp/WEB-INF/images/"+id+"/"));
+
+        }
+        catch(Exception e)
+        {
+            System.out.println("Failed to Delete image !!");
+        }
+        return "redirect:/blog";
+    }
+
 
     @PostMapping("/blog/{intg}/{id}/removecomment")
     public String blogCommentDelete(@PathVariable(value="id") long id, @PathVariable(value="intg") long intg, Model model){

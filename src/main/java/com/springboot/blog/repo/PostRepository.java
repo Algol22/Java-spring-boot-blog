@@ -41,4 +41,18 @@ public interface PostRepository extends CrudRepository<Post, Long> {
     @Query(value ="update post set numberofcomments=:numberofcomments where id=:id", nativeQuery = true)
     public void updateComments(@Param("id") Long id, @Param("numberofcomments") int numberofcomments);
 
+    @Modifying
+    @Transactional
+    @Query(value ="update post set photos=:photo where id=:id", nativeQuery = true)
+    public void updatePhoto(@Param("id") Long id, @Param("photo") String photo);
+
+    @Modifying
+    @Transactional
+    @Query(value ="update post set photos=null where id=:id", nativeQuery = true)
+    public void deletePhoto(@Param("id") Long id);
+
+    @Transactional
+    @Query(value ="select photos from post where id=:id", nativeQuery = true)
+    public String findPhotoById(@Param("id") Long id);
+
 }
