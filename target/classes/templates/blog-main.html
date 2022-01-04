@@ -53,7 +53,7 @@
 
         <h3 th:text="${el.title}"/>
         <p th:text="${el.anons}"/>
-        <span th:if="${!#strings.isEmpty(el.photos)}"><img th:src="${'/img/'+el.id+'/'+el.photos}"/><br/></span>
+        <span th:if="${!#strings.isEmpty(el.photos)}"><img th:src="@{${'/img/'+el.id+'/'+el.photos}}"/><br/></span>
         <i style="font-size: small;"><span th:text="${el.thedate}"/> </i> | <i> <a th:href="${'/blog/search/'+{el.tag}}"/>#<span th:text="${el.tag}"/></a></i> <span th:if="${el.numberofcomments>0}"><i>| comments: <span th:text="${el.numberofcomments}"/></i></span><br/>
 
         <div class="row">
