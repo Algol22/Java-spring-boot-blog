@@ -36,7 +36,7 @@ public class ApiRestController {
         return allPostsFind;
     }
 //    // GET all
-//    fetch('/api/').then(response => response.json().then(console.log))
+//    fetch('https://jsprblog.herokuapp.com/api/').then(response => response.json().then(console.log))
 
 
     @GetMapping("{id}")
@@ -55,9 +55,9 @@ public class ApiRestController {
         return postnew;
     }
 
-    // POST add new one
+//     POST add new one
 //    fetch(
-//  '/api',
+//  'https://jsprblog.herokuapp.com/api',
 //    {
 //        method: 'POST',
 //                headers: { 'Content-Type': 'application/json' },
@@ -76,7 +76,7 @@ public class ApiRestController {
     }
 //    // PUT update
 //    fetch(
-//  '/api/278',
+//  'https://jsprblog.herokuapp.com/api/278',
 //    {
 //        method: 'PUT',
 //                headers: { 'Content-Type': 'application/json' },
@@ -93,7 +93,7 @@ public class ApiRestController {
      postRepository.deleteById(id);
     }
 //    // DELETE existing
-//    fetch('/api/279', { method: 'DELETE' }).then(result => console.log(result))
+//    fetch('https://jsprblog.herokuapp.com/api/279', { method: 'DELETE' }).then(result => console.log(result))
 
 
 }
