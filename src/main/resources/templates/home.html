@@ -46,7 +46,7 @@
 
             <div th:each="el : ${homePost}">
                 <form  th:object="${home}" method="post" >
-                    <textarea type="text" th:value="${el.home}"  name="home" placeholder="update text" class="form-control"> [[${el.home}]]</textarea><br>
+                    <textarea type="text" th:value="${el.home}"  name="home" placeholder="update text" class="form-control">[[${el.home}]]</textarea><br>
 
                     <input type="text" name="photourl" th:value="${el.photourl}" placeholder="photo url" class="form-control"><br>
                     <button type="submit" class="btn btn-secondary">Обновить</button>
