@@ -21,8 +21,8 @@
         <div th:each="el : ${post}">
             <form  method="post">
                 <input type="text" th:value="${el.title}"  name="title" placeholder="Введите назвение статьи" class="form-control"><br>
-                <textarea type="text" th:value="${el.anons}"  name="home" placeholder="update text" class="form-control"> [[${el.anons}]]</textarea><br>
-                <textarea type="text" th:value="${el.full_text}"  name="home" placeholder="update text" class="form-control"> [[${el.full_text}]]</textarea><br>
+                <textarea type="text" th:value="${el.anons}"  name="anons" placeholder="update text" class="form-control"> [[${el.anons}]]</textarea><br>
+                <textarea type="text" th:value="${el.full_text}"  name="full_text" placeholder="update text" class="form-control"> [[${el.full_text}]]</textarea><br>
                 <input type="text" th:value="${el.tag}" name="tag" placeholder="Введите tag" class="form-control"><br>
                 <span th:if="${!#strings.isEmpty(el.photoUrl)}"><img th:src="@{${el.photoUrl}}"/><br/></span>
                 <input type="text" name="photoUrl" th:value="${el.photoUrl}" placeholder="photo url" class="form-control"><br>
