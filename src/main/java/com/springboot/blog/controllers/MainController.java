@@ -1,14 +1,23 @@
 package com.springboot.blog.controllers;
 
+import com.springboot.blog.models.About;
+import com.springboot.blog.models.Home;
+import com.springboot.blog.models.Post;
+import com.springboot.blog.repo.AboutRepo;
+import com.springboot.blog.repo.HomeRepo;
+import com.springboot.blog.repo.UserRepo;
 import com.springboot.blog.weather.Weather;
 import org.json.JSONObject;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -16,15 +25,50 @@ import java.util.regex.Pattern;
 @Controller
 public class MainController {
 
+    @Autowired
+    private AboutRepo aboutRepo;
+
+    @Autowired
+    private HomeRepo homeRepo;
+
     @GetMapping("/")
     public String home(Model model) {
-        model.addAttribute("title", "Main");
+        Iterable <Home> home = homeRepo.findAll();
+        List<Home> homePost = new ArrayList<>();
+        home.forEach(homePost::add);
+        if(homePost.isEmpty()){
+            homePost.add(new Home(1L,"empty","empty"));
+        }
+        model.addAttribute("homePost", homePost);
         return "home";
+    }
+
+    @PostMapping("/")
+    public String homeadd(@RequestParam String home, @RequestParam String photourl, Model model) {
+            Home homeObject = new Home(1L, home,photourl);
+            homeRepo.save(homeObject);
+
+        return "redirect:/";
+    }
+
+    @PostMapping("/about")
+    public String aboutAdd(@RequestParam String about, @RequestParam String photourl, Model model) {
+        About aboutObject = new About(1L, about,photourl);
+        aboutRepo.save(aboutObject);
+        return "redirect:/about";
     }
 
     @GetMapping("/about")
     public String about(Model model) {
-        model.addAttribute("title", "About");
+        Iterable <About> about = aboutRepo.findAll();
+        List<About> aboutPost = new ArrayList<>();
+        about.forEach(aboutPost::add);
+
+        if(aboutPost.isEmpty()){
+            aboutPost.add(new About(1L,"empty","empty"));
+        }
+
+        model.addAttribute("aboutPost", aboutPost);
         return "about";
     }
 

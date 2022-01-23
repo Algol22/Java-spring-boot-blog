@@ -21,7 +21,8 @@
         <div th:each="el : ${post}" class="alert alert-info mt-2">
 
             <h3 th:text="${el.title}"/>
-            <p th:text="${el.full_text}"/>
+            <p style="white-space: pre-line" th:text="${el.anons}"/>
+            <p style="white-space: pre-line" th:text="${el.full_text}"/>
             <span th:if="${!#strings.isEmpty(el.photos)}"><img th:src="@{${'/images/'+el.id+'/'+el.photos}}"/><br/></span>
             <span th:if="${!#strings.isEmpty(el.photoUrl)}"><img th:src="@{${el.photoUrl}}"/><br/></span>
             <i style="font-size: small;"> <span th:text="${el.thedate}"/> #<span th:text="${el.tag}"/></i><br/>

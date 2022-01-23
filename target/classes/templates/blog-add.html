@@ -20,7 +20,7 @@
         <h1>Добавление статьи</h1>
         <form th:action="@{/blog/add}"  th:object="${post}" method="post"  enctype="multipart/form-data">
             <input type="text" name="title" placeholder="Введите назвение статьи" class="form-control"><br>
-            <input type="text" name="anons" placeholder="Введите анонс статьи" class="form-control"><br>
+            <textarea type="text"  name="anons" placeholder="анонс" class="form-control"></textarea><br>
             <input type="text" name="tag" placeholder="тэг" class="form-control"><br>
             <textarea name="full_text" placeholder="Введите полный текст статьи" class="form-control"></textarea><br>
             <label>Photos: </label>

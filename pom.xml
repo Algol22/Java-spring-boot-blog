@@ -27,7 +27,11 @@
 			<artifactId>spring-boot-starter-security</artifactId>
 		</dependency>
 		<!-- опционально, библиотека добавит полезные теги для SPRING SECURITY в Thymeleaf шаблонах -->
-
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>1.16.18</version>
+		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/org.thymeleaf.extras/thymeleaf-extras-springsecurity4 -->
 		<dependency>

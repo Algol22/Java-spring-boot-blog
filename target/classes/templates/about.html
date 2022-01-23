@@ -20,8 +20,33 @@
 
         <h2 th:text="${title}"/>
 
-        Hello, I am Andrey, practicing Java.
+        <span th:each="li : ${aboutPost}">
+            <span th:if="${!#strings.isEmpty(li.photourl)}"><img th:src="@{${li.photourl}}"/><br/></span>
+        <span style="white-space: pre-line" th:text="${li.about}"></span>
+        </span>
+
+
+    <div th:if="${ #authorization.expression('isAuthenticated()') and #strings.contains(#authentication.principal.authorities,'ADMIN')}">
+
+
+        <a class="btn btn-secondary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+            Edit
+        </a><br/>
+        <div class="collapse" id="collapseExample">
+        <div th:each="el : ${aboutPost}">
+            <form  method="post">
+                <textarea type="text"   name="about" placeholder="Введите назвение статьи" class="form-control"> [[${el.about}]]</textarea><br>
+
+                <input type="text" name="photourl" th:value="${el.photourl}" placeholder="photo url" class="form-control"><br>
+                <button type="submit" class="btn btn-secondary">Обновить</button>
+            </form>
+
+        </div>
+        </div>
     </div>
+
+    </div>
+
 
 </main>
 
