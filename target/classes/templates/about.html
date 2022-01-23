@@ -22,7 +22,7 @@
 
         <span th:each="li : ${aboutPost}">
             <span th:if="${!#strings.isEmpty(li.photourl)}"><img th:src="@{${li.photourl}}"/><br/></span>
-        <span style="white-space: pre-line" th:text="${li.about}"></span>
+        <span style="white-space: pre-line" th:utext="${li.about}"></span>
         </span>
 
 
@@ -35,7 +35,7 @@
         <div class="collapse" id="collapseExample">
         <div th:each="el : ${aboutPost}">
             <form  method="post">
-                <textarea type="text"   name="about" placeholder="Введите назвение статьи" class="form-control"> [[${el.about}]]</textarea><br>
+                <textarea type="text"   name="about" placeholder="Введите назвение статьи" class="form-control">[[${el.about}]]</textarea><br>
 
                 <input type="text" name="photourl" th:value="${el.photourl}" placeholder="photo url" class="form-control"><br>
                 <button type="submit" class="btn btn-secondary">Обновить</button>

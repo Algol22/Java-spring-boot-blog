@@ -22,7 +22,7 @@
 
         <span th:each="li : ${aboutPost}">
             <span th:if="${!#strings.isEmpty(li.photourl)}"><img th:src="@{${li.photourl}}"/><br/></span>
-        <span style="white-space: pre-line" th:text="${li.about}"></span>
+        <span style="white-space: pre-line" th:utext="${li.about}"></span>
         </span>
 
 

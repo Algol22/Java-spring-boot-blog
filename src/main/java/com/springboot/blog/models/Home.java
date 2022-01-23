@@ -2,16 +2,15 @@ package com.springboot.blog.models;
 
 
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Home {
 
     @Id
     private Long id;
+
+    @Column(length=10485760)
     private String home;
     private String photourl;
 

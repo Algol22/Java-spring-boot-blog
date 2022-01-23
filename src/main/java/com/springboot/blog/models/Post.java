@@ -20,6 +20,7 @@ public class Post {
     private Long id;
 
     @JsonManagedReference
+    @Column(columnDefinition = "LONGTEXT")
     @OneToMany(mappedBy = "post", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Set <Comment> comments;
 
@@ -27,7 +28,17 @@ public class Post {
     @OneToMany(mappedBy = "post", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Set <Favourites> favourites;
 
-    private String title, anons, full_text, tag;
+
+    private String title;
+
+    @Column(length=10485760)
+    private String anons;
+
+    @Column(length=10485760)
+    private String full_text;
+
+    private String tag;
+
     private int numberofcomments;
     private String photoUrl;
 

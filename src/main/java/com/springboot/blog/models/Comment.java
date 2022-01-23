@@ -16,6 +16,8 @@ public class Comment {
     @SequenceGenerator(name="comment_generator", sequenceName = "comment_seq", allocationSize=50)
     @Column(name = "commentId", updatable = false, nullable = false)
     private Long commentId;
+
+    @Column(length=10485760)
     private String text;
     private String userdb;
     @DateTimeFormat

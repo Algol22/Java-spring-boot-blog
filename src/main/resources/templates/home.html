@@ -32,7 +32,7 @@
 
         <span th:each="li : ${homePost}">
             <span th:if="${!#strings.isEmpty(li.photourl)}"><img th:src="@{${li.photourl}}"/><br/></span>
-        <span style="white-space: pre-line" th:text="${li.home}"></span>
+        <span style="white-space: pre-line" th:utext="${li.home}"></span>
         </span>
 
 

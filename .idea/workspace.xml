@@ -5,9 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="90d31898-99e8-4e13-9a71-2efdfdeb194d" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/blog.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/blog.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/springboot/blog/models/About.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/springboot/blog/models/About.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/springboot/blog/models/Comment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/springboot/blog/models/Comment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/springboot/blog/models/Home.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/springboot/blog/models/Home.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/springboot/blog/models/Post.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/springboot/blog/models/Post.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/about.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/about.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/blog-edit.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/blog-edit.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/blog-details.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/blog-details.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/blog-main.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/blog-main.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/about.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/about.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/blog-edit.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/blog-edit.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/home.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,8 +30,8 @@
       <list>
         <option value="HTML File" />
         <option value="Enum" />
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -76,7 +87,7 @@
       <recent name="com.springboot.blog" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.BlogApplication">
     <configuration name="BlogApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.springboot.blog.BlogApplication" />
       <module name="blog" />
@@ -90,9 +101,43 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="MyMathTest.zeroDominatorShouldThrowException" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="blog" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.springboot.blog.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.springboot.blog" />
+      <option name="MAIN_CLASS_NAME" value="com.springboot.blog.MyMathTest" />
+      <option name="METHOD_NAME" value="zeroDominatorShouldThrowException" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Vector2DTest.newVectorShouldHaveZeroLength" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="blog" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.springboot.blog.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.springboot.blog" />
+      <option name="MAIN_CLASS_NAME" value="com.springboot.blog.Vector2DTest" />
+      <option name="METHOD_NAME" value="newVectorShouldHaveZeroLength" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.BlogApplication" />
+        <item itemvalue="JUnit.MyMathTest.zeroDominatorShouldThrowException" />
+        <item itemvalue="JUnit.Vector2DTest.newVectorShouldHaveZeroLength" />
       </list>
     </recent_temporary>
   </component>
