@@ -1,7 +1,6 @@
 package com.springboot.blog.models;
 
 
-import lombok.Data;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
