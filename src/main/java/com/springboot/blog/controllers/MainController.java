@@ -98,9 +98,9 @@ public class MainController {
             Iterable <About> about = aboutRepo.findAll();
             List<About> aboutPost = new ArrayList<>();
             about.forEach(aboutPost::add);
-             HtmlConverter.convertToPdf(aboutPost.get(0).getAbout().replaceAll("(\r\n|\n)", "<br />"), new FileOutputStream("CV.pdf"));
+             HtmlConverter.convertToPdf(aboutPost.get(0).getAbout().replaceAll("(\r\n|\n)", "<br />"), new FileOutputStream("CV_Andrey_(generated).pdf"));
 
-            File file = new File("CV.pdf");
+            File file = new File("CV_Andrey_(generated).pdf");
             HttpHeaders respHeaders = new HttpHeaders();
             MediaType mediaType = MediaType.parseMediaType("application/pdf");
             respHeaders.setContentType(mediaType);
