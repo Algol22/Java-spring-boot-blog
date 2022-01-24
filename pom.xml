@@ -114,8 +114,24 @@
 			<version>4.1</version>
 		</dependency>
 
+
+		<!--PDF-->
+		<dependency>
+			<groupId>com.itextpdf</groupId>
+			<artifactId>kernel</artifactId>
+			<version>7.1.14</version>
+		</dependency>
+		<dependency>
+			<groupId>com.itextpdf</groupId>
+			<artifactId>html2pdf</artifactId>
+			<version>3.0.3</version>
+		</dependency>
+
+		<!--PDF-->
+
 	</dependencies>
-	
+
+
 
 	<build>
 		<plugins>

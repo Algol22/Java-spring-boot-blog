@@ -1,5 +1,22 @@
 package com.springboot.blog.controllers;
 
+
+import java.io.*;
+
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
+
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
+
+import com.itextpdf.html2pdf.HtmlConverter;
+
 import com.springboot.blog.models.About;
 import com.springboot.blog.models.Home;
 import com.springboot.blog.models.Post;
@@ -7,19 +24,36 @@ import com.springboot.blog.repo.AboutRepo;
 import com.springboot.blog.repo.HomeRepo;
 import com.springboot.blog.repo.UserRepo;
 import com.springboot.blog.weather.Weather;
+import org.apache.tomcat.util.http.fileupload.FileUtils;
+import org.apache.tomcat.util.http.fileupload.IOUtils;
+import org.dom4j.Document;
+import org.dom4j.DocumentException;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.InputStreamResource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.ServletOutputStream;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.File;
+import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import static javax.tools.JavaFileObject.Kind.HTML;
 
 
 @Controller
@@ -57,6 +91,25 @@ public class MainController {
         aboutRepo.save(aboutObject);
         return "redirect:/about";
     }
+
+
+    @PostMapping("/about/pdf")
+    public ResponseEntity<InputStreamResource> aboutDownloader( HttpServletResponse response,HttpServletRequest request) throws FileNotFoundException {
+            Iterable <About> about = aboutRepo.findAll();
+            List<About> aboutPost = new ArrayList<>();
+            about.forEach(aboutPost::add);
+             HtmlConverter.convertToPdf(aboutPost.get(0).getAbout().replaceAll("(\r\n|\n)", "<br />"), new FileOutputStream("CV.pdf"));
+
+            File file = new File("CV.pdf");
+            HttpHeaders respHeaders = new HttpHeaders();
+            MediaType mediaType = MediaType.parseMediaType("application/pdf");
+            respHeaders.setContentType(mediaType);
+            respHeaders.setContentLength(file.length());
+            respHeaders.setContentDispositionFormData("attachment", file.getName());
+            InputStreamResource isr = new InputStreamResource(new FileInputStream(file));
+            return new ResponseEntity<InputStreamResource>(isr, respHeaders, HttpStatus.OK);
+    }
+
 
     @GetMapping("/about")
     public String about(Model model) {
