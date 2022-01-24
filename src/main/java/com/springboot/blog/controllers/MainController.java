@@ -95,10 +95,15 @@ public class MainController {
 
     @PostMapping("/about/pdf")
     public ResponseEntity<InputStreamResource> aboutDownloader( HttpServletResponse response,HttpServletRequest request) throws FileNotFoundException {
+        String url="";
             Iterable <About> about = aboutRepo.findAll();
             List<About> aboutPost = new ArrayList<>();
             about.forEach(aboutPost::add);
-             HtmlConverter.convertToPdf(aboutPost.get(0).getAbout().replaceAll("(\r\n|\n)", "<br />"), new FileOutputStream("CV_Andrey_(generated).pdf"));
+        if(!(aboutPost.get(0).getPhotourl().isEmpty())){
+           url = "<img src=\"" +aboutPost.get(0).getPhotourl()+"\" \n" +
+                   "  width=\"100\" height=\"100\" alt=\"pic\"><br/><br/>";
+        }
+            HtmlConverter.convertToPdf( url + aboutPost.get(0).getAbout().replaceAll("(\r\n|\n)", "<br />"), new FileOutputStream("CV_Andrey_(generated).pdf"));
 
             File file = new File("CV_Andrey_(generated).pdf");
             HttpHeaders respHeaders = new HttpHeaders();
