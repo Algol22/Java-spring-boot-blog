@@ -51,10 +51,10 @@
     <nav aria-label="...">
         <ul  class="pagination">
 
-            <span><li class="page-item"><a class="page-link noHover" tabindex="-1">Items</a></li></span>
-            <span><li  class="page-item" ><a class="page-link" th:classappend="${posts!=null and posts.getSize()==5} ? pDisabled : ''" th:href="'/blog?page='+0+'&size=5'">5</a></li></span>
-            <span><li  class="page-item"><a class="page-link" th:classappend="${posts!=null and posts.getSize()==10} ? pDisabled : ''" th:href="'/blog?page='+0+'&size=10'">10</a></li></span>
-            <span><li  class="page-item"><a class="page-link" th:classappend="${posts!=null and posts.getSize()==15} ? pDisabled : ''" th:href="'/blog?page='+0+'&size=15'">15</a></li></span>
+            <span th:if="${posts!=null}"><li class="page-item"><a class="page-link noHover" tabindex="-1">Items</a></li></span>
+            <span th:if="${posts!=null}"><li  class="page-item" ><a class="page-link" th:classappend="${posts.getSize()==5} ? pDisabled : ''" th:href="'/blog?page='+0+'&size=5'">5</a></li></span>
+            <span th:if="${posts!=null}"><li  class="page-item"><a class="page-link" th:classappend="${posts.getSize()==10} ? pDisabled : ''" th:href="'/blog?page='+0+'&size=10'">10</a></li></span>
+            <span th:if="${posts!=null}"><li  class="page-item"><a class="page-link" th:classappend="${posts.getSize()==15} ? pDisabled : ''" th:href="'/blog?page='+0+'&size=15'">15</a></li></span>
         </ul>
     </nav>
 
@@ -88,7 +88,7 @@
 
             <span th:if="${posts!=null and posts.hasPrevious()}"> <li class="page-item"><a class="page-link" th:href="'/blog?page='+${posts.getNumber()-1}+'&size='+${posts.getSize()}"><< Previous</a></li></span>
 
-            <span th:if="${posts!=null}"><li  class="page-item"><a class="page-link noHover pDisabled" href="#">[[${posts.getNumber()+1}]]</a></li></span>
+            <span th:if="${posts!=null && posts.stream().count()>1}"><li  class="page-item"><a class="page-link noHover pDisabled" href="#">[[${posts.getNumber()+1}]]</a></li></span>
             <span th:if="${posts!=null and posts.hasNext()}"><li class="page-item"><a class="page-link" th:href="'/blog?page='+${posts.getNumber()+1}+'&size='+${posts.getSize()}">Next >></a></li></span>
 
         </ul>

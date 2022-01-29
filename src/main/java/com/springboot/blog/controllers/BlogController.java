@@ -185,22 +185,25 @@ public class BlogController {
             model.addAttribute("favourites", favourites);
         }
 
+        Page <Post> page;
 
         if(tag.isEmpty()){
-            Iterable<Post> posts = postRepository.findAll();
-            model.addAttribute("posts", posts);
+            page = (Page<Post>)  postRepository.findAll();
+            model.addAttribute("posts", page);
 
 
         }else {
 
-            Iterable<Post> posts = postRepository.retrieveByTag(tag, pageable);
+            page = (Page<Post>) postRepository.retrieveByTag(tag, pageable);
 
-            if (!posts.iterator().hasNext()) {
+            if (!page.iterator().hasNext()) {
                 model.addAttribute("message", "Not found");
+                model.addAttribute("posts", page);
             } else {
-                model.addAttribute("posts", posts);
+                model.addAttribute("posts", page);
             }
         }
+
         return "blog-main";
     }
 
@@ -229,10 +232,13 @@ public class BlogController {
 
             if (!page.iterator().hasNext()) {
                 model.addAttribute("message", "Not found");
+                model.addAttribute("posts", page);
+
             } else {
                 model.addAttribute("posts", page);
             }
         }
+
 
         return "blog-main";
     }
@@ -354,27 +360,27 @@ public class BlogController {
     @PostMapping("/blog")
     public String sortPosts(@RequestParam(required = false) String sortBy ,@RequestParam(required = false) Long id, Model model, Principal user, @PageableDefault(sort=("id"),direction= Sort.Direction.ASC) Pageable pageable) {
 
-//        if (user != null) {
-//            Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-//            String userName = authentication.getName();
-//            User usercheck = userRepo.findByUsername(userName);
-//            Iterable<Long> favourites = favRepository.findFavourites(usercheck.getId());
-//            List<Long> resultFavourites = new ArrayList<>();
-//            favourites.forEach(resultFavourites::add);
-//            model.addAttribute("favourites", favourites);
-//        }
+        if (user != null) {
+            Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+            String userName = authentication.getName();
+            User usercheck = userRepo.findByUsername(userName);
+            Iterable<Long> favourites = favRepository.findFavourites(usercheck.getId());
+            List<Long> resultFavourites = new ArrayList<>();
+            favourites.forEach(resultFavourites::add);
+            model.addAttribute("favourites", favourites);
+        }
 
 
-//        if(id!=null) {
-//            Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-//            String userName = authentication.getName();
-//            User useraddFavourites = userRepo.findByUsername(userName);
-//            Favourites favourite = new Favourites(useraddFavourites.getId(), postRepository.findById(id).orElseThrow());
-//            favRepository.save(favourite);
-//            Iterable<Post> posts = postRepository.findAll();
-//            model.addAttribute("posts", posts);
-//            return "redirect:/blog";
-//        }
+        if(id!=null) {
+            Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+            String userName = authentication.getName();
+            User useraddFavourites = userRepo.findByUsername(userName);
+            Favourites favourite = new Favourites(useraddFavourites.getId(), postRepository.findById(id).orElseThrow());
+            favRepository.save(favourite);
+            Iterable<Post> posts = postRepository.findAll();
+            model.addAttribute("posts", posts);
+            return "redirect:/blog";
+        }
         Page <Post> page;
 
         if(sortBy.equals("desc")) {
