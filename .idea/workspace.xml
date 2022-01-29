@@ -4,7 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="90d31898-99e8-4e13-9a71-2efdfdeb194d" name="Default Changelist" comment="" />
+    <list default="true" id="90d31898-99e8-4e13-9a71-2efdfdeb194d" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CV_Andrey_(generated).pdf" beforeDir="false" afterPath="$PROJECT_DIR$/CV_Andrey_(generated).pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/blocks/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/blocks/header.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/blocks/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/blocks/header.html" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -46,7 +51,7 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/webapp/WEB-INF/images" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -55,18 +60,18 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\admin\Desktop\jsprblog\Java-spring-boot-blog" />
+      <recent name="C:\Users\admin\Desktop\jsprblog\Java-spring-boot-blog\src\main\resources" />
       <recent name="C:\Users\admin\Desktop\Blog Java\test\Java-spring-boot-blog\src\main\webapp\WEB-INF\images" />
       <recent name="C:\Users\admin\Desktop\Blog Java\test\Java-spring-boot-blog\src\main\resources\static\img" />
       <recent name="C:\Users\admin\Desktop\Blog Java\test\Java-spring-boot-blog\src\main\resources" />
-      <recent name="C:\Users\admin\Desktop\Blog Java\test\Java-spring-boot-blog\src\main\resources\static" />
-      <recent name="C:\Users\admin\Desktop\Blog Java\test\Java-spring-boot-blog\src\main\resources\templates" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\admin\Desktop\Blog Java\test\Java-spring-boot-blog\src\main\resources\static\img" />
-      <recent name="C:\Users\admin\Desktop\Blog Java\test\Java-spring-boot-blog\src\main\resources\static" />
-      <recent name="C:\Users\admin\Desktop\Blog Java\test\Java-spring-boot-blog\webapp\images" />
-      <recent name="C:\Users\admin\Desktop\Blog Java\test\Java-spring-boot-blog" />
-      <recent name="C:\Users\admin\Desktop\Blog Java\test\Java-spring-boot-blog\src\main\resources" />
+      <recent name="C:\Users\admin\Desktop\jsprblog\Java-spring-boot-blog\src\main\resources\public" />
+      <recent name="C:\Users\admin\Desktop\jsprblog\Java-spring-boot-blog\src\main\webapp" />
+      <recent name="C:\Users\admin\Desktop\jsprblog\Java-spring-boot-blog\src\main" />
+      <recent name="C:\Users\admin\Desktop\jsprblog\Java-spring-boot-blog\src\main\webapp\WEB-INF" />
+      <recent name="C:\Users\admin\Desktop\jsprblog\Java-spring-boot-blog\src\main\resources" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="com.springboot.blog" />
