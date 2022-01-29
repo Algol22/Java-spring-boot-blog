@@ -5,11 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="90d31898-99e8-4e13-9a71-2efdfdeb194d" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/springboot/blog/controllers/BlogController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/springboot/blog/controllers/BlogController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/springboot/blog/models/Post.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/springboot/blog/models/Post.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/springboot/blog/repo/CommentRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/springboot/blog/repo/CommentRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/blocks/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/blocks/header.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

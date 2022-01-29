@@ -87,13 +87,6 @@ public class Post {
         this.full_text = full_text;
     }
 
-    public int getViews() {
-        return views;
-    }
-
-    public void setViews(int views) {
-        this.views = views;
-    }
 
     public Date getThedate() {
         return thedate;
@@ -148,7 +141,6 @@ public class Post {
                 ", full_text='" + full_text + '\'' +
                 ", tag='" + tag + '\'' +
                 ", thedate=" + thedate +
-                ", views=" + views +
                 '}';
     }
 
