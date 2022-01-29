@@ -4,7 +4,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
     <style type="text/css">
 body{
-background-color:#222; color:#999
+background-color:#222; color:#999;
 }
 
 .alert{
@@ -51,7 +51,8 @@ a:active {
   width: 100%;
 }
 
-.form-control, .form-control:focus {
+
+.form-control,.form-control:focus {
   background-color: #343A40;
   border:none;
   color: #999;
@@ -71,6 +72,42 @@ img {
   height: auto;
 }
 
+
+
+
+.pagination > li > a
+{
+    background-color: #343a40;
+    color:#999;
+    border-color:#222;
+}
+
+.pagination > .active > a:hover
+{
+    background-color: #343a40!important;;
+}
+
+.noHover{
+    pointer-events: none;
+}
+
+.page-link, .page-item{
+background-color: #343a40;
+border: 0px;
+margin: 1px 1px 1px 1px;
+border-radius: 0;
+color:#999;
+}
+
+.page-link:hover{
+background-color: #5a6268;
+color:white;
+}
+
+.pDisabled{
+background-color: #5a6268!important;
+pointer-events: none;
+}
 </style>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand" href="/"><i><b>Java Blog</b></i></a>

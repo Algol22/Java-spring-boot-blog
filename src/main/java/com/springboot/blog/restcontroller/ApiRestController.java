@@ -1,23 +1,14 @@
 package com.springboot.blog.restcontroller;
 
 
-import com.springboot.blog.domain.User;
 import com.springboot.blog.exceptions.NotFoundException;
 import com.springboot.blog.models.Post;
 import com.springboot.blog.repo.PostRepository;
-import com.springboot.blog.repo.UserRepo;
-import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.Modifying;
-import org.springframework.data.repository.query.Param;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Iterator;
 import java.util.List;
 
 @RestController

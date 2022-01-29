@@ -1,6 +1,8 @@
 package com.springboot.blog.repo;
 
 import com.springboot.blog.models.Post;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
@@ -13,19 +15,22 @@ import java.util.List;
 public interface PostRepository extends CrudRepository<Post, Long> {
 
 
+    Page <Post> findAll(Pageable page);
+
+
     @Query("SELECT u FROM Post u ORDER BY u.thedate DESC")
     List<Post> findAllPosts();
 
 
     @Query("SELECT u FROM Post u WHERE u.tag = LOWER(:tag)")
-    List<Post> retrieveByTag(@Param("tag") String tag);
+    Page <Post>  retrieveByTag(@Param("tag") String tag, Pageable page );
 
 
     @Query("SELECT u FROM Post u ORDER BY u.thedate ASC")
-    List<Post> sortByAscDate();
+    Page <Post> sortByAscDate(Pageable page);
 
     @Query("SELECT u FROM Post u ORDER BY u.thedate DESC")
-    List<Post> sortByDescDate();
+    Page <Post> sortByDescDate(Pageable page);
 
     @Query(value = "select p.id, p.title from post p where p.id in (select distinct (p.post_id) as p from favourites p where p.user_id=:id )", nativeQuery = true)
     public List <Post> findByPostId(@Param("id") Long id);

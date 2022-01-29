@@ -2,6 +2,10 @@ package com.springboot.blog.controllers;
 
 import com.springboot.blog.FileUpload.FileUploadUtil;
 import org.apache.tomcat.util.http.fileupload.FileUtils;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
@@ -57,12 +61,13 @@ public class BlogController {
 
 
     @GetMapping("/blog")
-    public String blogMain(Model model, Principal user) {
+    public String blogMain(Model model, Principal user, @PageableDefault(sort=("id"),direction= Sort.Direction.DESC) Pageable pageable) {
 
-        Iterable<Post> posts = postRepository.findAllPosts();
-        List<Post> resultPosts = new ArrayList<>();
-        posts.forEach(resultPosts::add);
+        Page <Post> page;
+        page = (Page<Post>) postRepository.findAll(pageable);
 
+
+        //favourites
         if (user != null) {
             Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
             String userName = authentication.getName();
@@ -73,70 +78,13 @@ public class BlogController {
             model.addAttribute("favourites", favourites);
         }
 
-
-        int totalPosts = IterableUtils.size(posts);
-        int numberOfPosts = 10;
-
-        model.addAttribute("posts", resultPosts);
+        model.addAttribute("posts", page);
+        model.addAttribute("url", "/blog");
 
 
-        if (totalPosts > numberOfPosts) {
-            model.addAttribute("currentpage", 1);
-            model.addAttribute("nextpage", 2);
-        }
         return "blog-main";
     }
 
-
-    @GetMapping("/blog/page/{pagenumber}")
-    public String blogMain(@PathVariable int pagenumber, Model model, Principal user) {
-        Iterable<Post> posts = postRepository.findAllPosts();
-        int totalPosts = IterableUtils.size(posts);
-        int pages = 0;
-        int numberOfPosts = 10;
-        int nextpage = pagenumber + 1;
-        if (totalPosts < numberOfPosts) {
-            nextpage = 0;
-        }
-
-        if (totalPosts > numberOfPosts) {
-            pages = (int) Math.round((totalPosts / numberOfPosts) + 0.5);
-        }
-        List<Post> result = new ArrayList<>();
-        posts.forEach(result::add);
-
-        if (pagenumber < 2) {
-            result.subList(numberOfPosts * pagenumber, result.size()).clear();
-
-        } else if ((pagenumber * numberOfPosts) > totalPosts) {
-            result.subList(0, numberOfPosts * (pagenumber - 1)).clear();
-            nextpage = nextpage - 1;
-
-        } else if ((pagenumber * numberOfPosts) < totalPosts) {
-            result.subList(0, (pagenumber - 1) * numberOfPosts).clear();
-            result.subList(0, totalPosts - (pagenumber * numberOfPosts)).clear();
-        }
-
-
-        if (user != null) {
-            Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-            String userName = authentication.getName();
-            User usercheck = userRepo.findByUsername(userName);
-            Iterable<Long> favourites = favRepository.findFavourites(usercheck.getId());
-            List<Long> resultFavourites = new ArrayList<>();
-            favourites.forEach(resultFavourites::add);
-            model.addAttribute("favourites", favourites);
-        }
-
-        model.addAttribute("posts", result);
-        model.addAttribute("firstpage", 1);
-        model.addAttribute("nextpage", nextpage);
-        model.addAttribute("previouspage", pagenumber - 1);
-        model.addAttribute("currentpage", pagenumber);
-        model.addAttribute("lastpage", pages);
-        return "blog-main";
-
-    }
 
 
 
@@ -226,7 +174,7 @@ public class BlogController {
 
 
     @GetMapping("/blog/search/{tag}")
-    public String blogSearch(@PathVariable String tag, Model model, Principal user){
+    public String blogSearch(@PathVariable String tag, Model model, Principal user, @PageableDefault(sort=("id"),direction= Sort.Direction.DESC) Pageable pageable){
         if (user != null) {
             Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
             String userName = authentication.getName();
@@ -245,7 +193,7 @@ public class BlogController {
 
         }else {
 
-            Iterable<Post> posts = postRepository.retrieveByTag(tag);
+            Iterable<Post> posts = postRepository.retrieveByTag(tag, pageable);
 
             if (!posts.iterator().hasNext()) {
                 model.addAttribute("message", "Not found");
@@ -258,7 +206,7 @@ public class BlogController {
 
 
     @PostMapping("/blog/search")
-    public String blogSearchPost(@RequestParam String tag, Model model, Principal user){
+    public String blogSearchPost(@RequestParam String tag, Model model, Principal user, @PageableDefault(sort=("id"),direction= Sort.Direction.DESC) Pageable pageable){
 
         if (user != null) {
             Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -270,18 +218,19 @@ public class BlogController {
             model.addAttribute("favourites", favourites);
         }
 
+        Page <Post> page;
 
         if(tag.isEmpty()){
-            Iterable<Post> posts = postRepository.findAll();
-            model.addAttribute("posts", posts);
+            page = (Page<Post>) postRepository.findAll();
+            model.addAttribute("posts", page);
         }else {
 
-            Iterable<Post> posts = postRepository.retrieveByTag(tag);
+            page = (Page<Post>)  postRepository.retrieveByTag(tag, pageable);
 
-            if (!posts.iterator().hasNext()) {
+            if (!page.iterator().hasNext()) {
                 model.addAttribute("message", "Not found");
             } else {
-                model.addAttribute("posts", posts);
+                model.addAttribute("posts", page);
             }
         }
 
@@ -403,38 +352,38 @@ public class BlogController {
 
 
     @PostMapping("/blog")
-    public String sortPosts(@RequestParam(required = false) String sortBy ,@RequestParam(required = false) Long id, Model model, Principal user) {
+    public String sortPosts(@RequestParam(required = false) String sortBy ,@RequestParam(required = false) Long id, Model model, Principal user, @PageableDefault(sort=("id"),direction= Sort.Direction.ASC) Pageable pageable) {
 
-        if (user != null) {
-            Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-            String userName = authentication.getName();
-            User usercheck = userRepo.findByUsername(userName);
-            Iterable<Long> favourites = favRepository.findFavourites(usercheck.getId());
-            List<Long> resultFavourites = new ArrayList<>();
-            favourites.forEach(resultFavourites::add);
-            model.addAttribute("favourites", favourites);
-        }
+//        if (user != null) {
+//            Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+//            String userName = authentication.getName();
+//            User usercheck = userRepo.findByUsername(userName);
+//            Iterable<Long> favourites = favRepository.findFavourites(usercheck.getId());
+//            List<Long> resultFavourites = new ArrayList<>();
+//            favourites.forEach(resultFavourites::add);
+//            model.addAttribute("favourites", favourites);
+//        }
 
 
-        if(id!=null) {
-            Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-            String userName = authentication.getName();
-            User useraddFavourites = userRepo.findByUsername(userName);
-            Favourites favourite = new Favourites(useraddFavourites.getId(), postRepository.findById(id).orElseThrow());
-            favRepository.save(favourite);
-            Iterable<Post> posts = postRepository.findAll();
-            model.addAttribute("posts", posts);
-            return "redirect:/blog";
-        }
-
+//        if(id!=null) {
+//            Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+//            String userName = authentication.getName();
+//            User useraddFavourites = userRepo.findByUsername(userName);
+//            Favourites favourite = new Favourites(useraddFavourites.getId(), postRepository.findById(id).orElseThrow());
+//            favRepository.save(favourite);
+//            Iterable<Post> posts = postRepository.findAll();
+//            model.addAttribute("posts", posts);
+//            return "redirect:/blog";
+//        }
+        Page <Post> page;
 
         if(sortBy.equals("desc")) {
-            Iterable<Post> posts = postRepository.sortByDescDate();
-            model.addAttribute("posts", posts);
+            page = (Page<Post>)postRepository.sortByDescDate(pageable);
+            model.addAttribute("posts", page);
 
         }else {
-            Iterable<Post> posts = postRepository.sortByAscDate();
-            model.addAttribute("posts", posts);
+            page = (Page<Post>) postRepository.sortByAscDate(pageable);
+            model.addAttribute("posts", page);
         }
         return "blog-main";
     }
