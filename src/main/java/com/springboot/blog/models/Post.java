@@ -50,8 +50,6 @@ public class Post {
     @DateTimeFormat
     Date thedate;
 
-    private int views;
-
     public Post(Long id, String title){
         this.title = title;
         this.id =id;

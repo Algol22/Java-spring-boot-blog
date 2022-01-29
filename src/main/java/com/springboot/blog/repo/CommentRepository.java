@@ -17,4 +17,9 @@ public interface CommentRepository extends CrudRepository<Comment, Long> {
     @Query(value="SELECT count(comment_id) FROM comment where id=:id", nativeQuery = true)
     int countComments(@Param("id") Long id);
 
+    @Transactional
+    @Query(value="SELECT id FROM comment where comment_id=:id", nativeQuery = true)
+    Long postId(@Param("id") Long id);
+
+
 }

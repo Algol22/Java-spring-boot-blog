@@ -349,8 +349,13 @@ public class BlogController {
 
     @PostMapping("/blog/{intg}/{id}/removecomment")
     public String blogCommentDelete(@PathVariable(value="id") long id, @PathVariable(value="intg") long intg, Model model){
+
+      Long postId = commentRepository.postId(id);
+      postRepository.updateComments(postId,commentRepository.countComments(postId)-1);
        Comment comment = commentRepository.findById(id).orElseThrow();
         commentRepository.delete(comment);
+
+
         return "redirect:/blog/{intg}";
 
     }
